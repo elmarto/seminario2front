@@ -1,0 +1,36 @@
+<header fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
+  <div class="header-menu" fxLayout fxLayoutAlign="start center">
+    
+    <button mat-button type="button" class="header-sector" (click)="toggleUnfold('sports')">
+      <div fxLayoutAlign="center center" fxLayoutGap="5px">
+        <div>
+          <div>CATEGORIES</div>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <div fxFlex></div>
+
+  <div class="header-menu actions" fxLayoutAlign="end center">
+    <button mat-button type="button" class="header-sector" (click)="toggleUnfold('user')">
+        <i class="material-icons">person_outline</i>
+      <span>LOGIN</span>
+    </button>
+    <button mat-button type="button" class="header-sector" (click)="toggleUnfold('user')">REGISTER</button>
+  </div>
+</header>
+<!-- 
+<div class="sports folded-menu" fxLayout fxLayout.xs="column" [ngClass]="{'unfolded': unfold.sports}">
+  <a class="menu-item" *ngFor="let sportItem of SPORTS" (click)="onSportChange(sportItem); this.unfoldAll();" fxLayoutGap="5px">
+    <img class="app-icon small" [src]="sportItem.icon" />
+    <span class="title">{{sportItem.title}}</span>
+  </a>
+</div> -->
+
+<!-- <div class="user folded-menu" fxLayout="column" [ngClass]="{'unfolded': unfold.user}">
+  <a class="menu-item" *ngFor="let option of USER_OPTIONS" [routerLink]="option.url" (click)="this.unfoldAll(); callOtherMethod(option.methodToCallOnClick);" fxLayoutGap="5px">
+    <img class="app-icon small" [src]="option.icon" />
+    <span class="title">{{option.key}}</span>
+  </a>
+</div> -->
