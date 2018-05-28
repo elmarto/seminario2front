@@ -14,7 +14,7 @@ import { RegistrationComponent } from './views/registration/registration.compone
 import { LoginComponent } from './views/login/login.component';
 
 /* Services */
-import { UsersService } from '../shared/services/users.service';
+import { RegistrationService } from '../shared/services/registration.service';
 import { RolesService } from '../shared/services/roles.service';
 
 
@@ -29,7 +29,7 @@ import { RolesService } from '../shared/services/roles.service';
     MatDividerModule
   ],
   providers: [
-    UsersService,
+    RegistrationService,
     RolesService
   ],
   declarations: [

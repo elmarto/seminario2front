@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UsersService } from '../../../shared/services/users.service';
+import { RegistrationService } from '../../../shared/services/registration.service';
 import { RolesService } from '../../../shared/services/roles.service';
-import { UserCreation } from '../../../shared/interfaces/user-creation';
 import { Role } from '../../../shared/interfaces/role';
+import { UserRegistration } from '../../../shared/interfaces/user-registration';
 
 @Component({
   selector: 'app-registration',
@@ -20,8 +20,10 @@ export class RegistrationComponent implements OnInit {
   /* Flow Status */
   firstFormGroup: FormGroup;
 
+  registered: boolean;
+
   constructor(private rolesService: RolesService,
-              private usersService: UsersService,
+              private registrationService: RegistrationService,
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -36,19 +38,18 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSelectionChange(event: any): void {
-    if (event.selectedIndex === 1) {
-      this.createUser();
+
+    if (event.selectedIndex === 1 && !this.registered) {
+
+      const userRegistration: UserRegistration = {
+        roleID: this.firstFormGroup.get('userRole').value,
+        userEmail: this.firstFormGroup.get('userEmail').value,
+        userPassword: this.firstFormGroup.get('userPassword').value
+      };
+
+      this.registrationService.registerUser(userRegistration).subscribe(response => {
+        this.registered = true;
+      });
     }
-  }
-
-  createUser(): void {
-
-    const userCreation: UserCreation = {
-      roleID: this.firstFormGroup.get('userRole').value,
-      userEmail: this.firstFormGroup.get('userEmail').value,
-      userPassword: this.firstFormGroup.get('userPassword').value
-    };
-
-    this.usersService.create(userCreation).subscribe(response => { });
   }
 }
