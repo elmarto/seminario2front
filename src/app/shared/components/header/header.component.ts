@@ -39,9 +39,17 @@ export class HeaderComponent {
   //   new AppSidenavItem('LOGOUT', 'assets/global/menu-ico-7logout.svg', null, '', null, 'logout')
   // ];
 
-  constructor(
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
+
+  login(): void {
+
+    this.router.navigate(['/home/login']);
+  }
+
+  registration(): void {
+
+    this.router.navigate(['/home/registration']);
+  }
 
   back() {
     // this.location.back();

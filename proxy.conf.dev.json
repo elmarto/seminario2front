@@ -1,7 +1,7 @@
 {
-  "/api/*": {
-    "target": "https://mydomain.com",
-    "secure": true,
+  "/servicios": {
+    "target": "http://quieroclases-api-web-dev.local",
+    "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
   }

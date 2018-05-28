@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: '',
+  apiUrl: '/servicios/v1',
 };

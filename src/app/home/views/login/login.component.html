@@ -1,0 +1,32 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center">
+  <div fxLayout="column" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="420px">
+    <h2>Bienvenido</h2>
+    <mat-tab-group>
+      <mat-tab label="Iniciar sesión">
+        <p>Ingrese sus credenciales a continuación:</p>
+        <form>
+          <div fxLayout="column" fxFlex="100%">
+            <mat-form-field>
+              <input matInput placeholder="Correo electrónico" name="userEmail" [(ngModel)]="userEmail" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Clave" name="userPassword" [(ngModel)]="userPassword" required>
+            </mat-form-field>
+            <button mat-button>Iniciar sesión</button>
+          </div>  
+        </form>
+      </mat-tab>
+      <mat-tab label="Recuperar mis credenciales">
+        <p>Ingrese su correo electrónico a continuación:</p>
+        <form>
+          <div fxLayout="column" fxFlex="100%">
+            <mat-form-field>
+              <input matInput placeholder="Correo electrónico" name="userEmail" [(ngModel)]="userEmail" required>
+            </mat-form-field>
+            <button mat-button>Recuperar credenciales</button>
+          </div>  
+        </form>
+      </mat-tab>
+    </mat-tab-group>       
+  </div> 
+</div>
