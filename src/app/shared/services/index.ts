@@ -1,3 +1,4 @@
 export { AuthService } from './auth.service';
-export { FeedService } from './feed.service';
-
+export { ProjectService } from './project.service';
+export { RegistrationService } from './registration.service';
+export { RolesService } from './roles.service';

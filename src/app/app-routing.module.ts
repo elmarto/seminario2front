@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
   // { path: '404', redirectTo: '' },
   // { path: '**', redirectTo: '' }
 ];

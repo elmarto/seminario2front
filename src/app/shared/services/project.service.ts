@@ -5,17 +5,17 @@ import { map, catchError } from 'rxjs/operators';
 import { environment as env} from 'environments/environment';
 
 @Injectable()
-export class FeedService  {
+export class ProjectService  {
 
   constructor(
     private http: Http
   ) {}
 
   all(request) {
-      return this.http.get(`${env.apiUrl}/feeds`).pipe(
-        map(response => response.json()),
-        catchError(this.handleError)
-      );
+    return this.http.get(`${env.apiUrl}/feeds`).pipe(
+      map(response => response.json()),
+      catchError(this.handleError)
+    );
   }
 
   private handleError (error: Response | any) {

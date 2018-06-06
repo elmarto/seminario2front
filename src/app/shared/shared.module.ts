@@ -10,7 +10,7 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent, FooterComponent } from './components';
-import { FeedService, AuthService } from './services';
+import { ProjectService, AuthService } from './services';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { FeedService, AuthService } from './services';
   ],
   providers: [
     AuthService,
-    FeedService
+    ProjectService
   ],
   exports: [
     CommonModule,

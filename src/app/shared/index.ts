@@ -6,3 +6,6 @@ export * from './services';
 
 // Components
 export * from './components';
+
+// Components
+export * from './interfaces';

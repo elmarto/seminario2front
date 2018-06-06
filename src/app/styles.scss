@@ -10,15 +10,6 @@
   }
 }
 
-input:-webkit-autofill, input:-webkit-autofill:focus{
-  animation-name: autofill;
-  -webkit-animation-name: autofill;
-  animation-fill-mode: both;
-  -webkit-animation-fill-mode: both;
-  box-shadow: 0 0 0 1000px $main-background-color inset;
-  -webkit-box-shadow: 0 0 0 1000px $main-background-color inset;
-  -webkit-text-fill-color: #fff;
-}
 
 input::-webkit-credentials-auto-fill-button {
   background-color: white !important;

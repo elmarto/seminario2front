@@ -1,37 +1,39 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center">
-  <div fxLayout="column" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="420px">
-    <h2>Nueva cuenta de usuario</h2>
-    <mat-vertical-stepper [linear]="true" (selectionChange)="onSelectionChange($event)" #stepper>
-      <mat-step [optional]="false" [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel>Información</ng-template>
-            <div fxLayout="column" fxFlex="100%">
-              <mat-form-field>
-                <mat-select placeholder="Quiero registrarme como" formControlName="userRole" required>
-                  <mat-option *ngFor="let role of roles" [value]="role.roleID">{{role.roleDescription}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div fxLayout="column" fxFlex="100%">
-              <mat-form-field>
-                <input matInput placeholder="Correo electrónico" formControlName="userEmail" required>
-              </mat-form-field>
-            </div>
-            <div fxLayout="column" fxFlex="100%">
-              <mat-form-field>
-                  <input matInput type="password" placeholder="Clave" formControlName="userPassword" required>
-              </mat-form-field>      
-            </div>  
-            <div fxLayout="column" fxFlex="100%" fxLayoutAlign="center bottom">
-                <button mat-button matStepperNext>Crear cuenta</button>
-            </div>          
-        </form>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Activación</ng-template>
-        <h3>Activación de cuenta pendiente</h3>
-        <p>Se ha envíado un correo electrónico con las instrucciones para activar la cuenta a su cuenta.</p>
-      </mat-step>
-    </mat-vertical-stepper>  
+  <div fxLayout="column" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="500px">
+    <h2>Crear Mi Cuenta</h2>
+    <mat-card>
+      <mat-vertical-stepper [linear]="true" (selectionChange)="onSelectionChange($event)" #stepper>
+        <mat-step [optional]="false" [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Información</ng-template>
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <mat-select placeholder="Quiero ser..." formControlName="userRole" required>
+                    <mat-option *ngFor="let role of roles" [value]="role.roleID">{{role.roleDescription}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <input matInput placeholder="Correo electrónico" formControlName="userEmail" required>
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Contraseña" formControlName="userPassword" required>
+                </mat-form-field>      
+              </div>  
+              <div fxLayout="column" fxFlex="100%" fxLayoutAlign="center bottom">
+                  <button mat-raised-button matStepperNext color="accent">CREAR CUENTA</button>
+              </div>          
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Activación</ng-template>
+          <h3>Activación de cuenta pendiente</h3>
+          <p>Se ha envíado un correo electrónico con las instrucciones para activar la cuenta a su cuenta.</p>
+        </mat-step>
+      </mat-vertical-stepper>  
+    </mat-card>
   </div>
 </div>

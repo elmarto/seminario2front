@@ -180,11 +180,11 @@
   "defaultProject": "client",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "pbk",
+      "prefix": "app",
       "styleext": "scss"
     },
     "@schematics/angular:directive": {
-      "prefix": "pbk"
+      "prefix": "app"
     }
   }
 }
