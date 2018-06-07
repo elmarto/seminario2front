@@ -1,5 +1,3 @@
-import { UrlSerializer } from "@angular/router";
-
 export interface Project {
   projectID: number;
   projectStatus: number;
