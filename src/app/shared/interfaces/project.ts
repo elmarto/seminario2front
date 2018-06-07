@@ -1,3 +1,104 @@
+import { UrlSerializer } from "@angular/router";
+
 export interface Project {
-  id: number;
+  projectID: number;
+  projectStatus: number;
+  projectName: string;
+  projectDescription: string;
+  registerDate: Date;
 }
+
+export interface ProjectCreateRequest {
+  userId: number;
+  projectName: string;
+  professionID: number;
+  projectDescription: string;
+}
+
+export interface ProjectCreateResponse {
+  projectID: number;
+  registerDate: Date;
+  client: Client;
+  profession: Profession;
+  projectStatus: ProjectStatus;
+  projectName: string;
+  projectDescription: string;
+}
+
+export interface Profession {
+  professionID: number;
+  professionName: string;
+}
+
+export interface Budget {
+  budgetID: number;
+  project: Project;
+  professional: Professional;
+  amount: number;
+  requestDate: Date;
+  budgetStatus: BudgetStatus;
+}
+
+export interface BudgetStatus {
+  budgetStatusID: number;
+  statusName: string;
+  statusDescription: string;
+}
+
+// Student
+export interface Client {
+  clientID: number;
+  user: User;
+  areaCode: string;
+  phoneNumber: string;
+}
+
+export interface User {
+  userID: number;
+  userStatus: UserStatus;
+  emailAddress: string;
+  registerDate: Date;
+  userInformation?: UserInformation;
+}
+
+export interface ProjectStatus {
+  projectStatusID: number;
+  statusName: string;
+  statusDescription: string;
+}
+
+export interface Professional {
+  professionalID: number;
+  professions: Profession[];
+  user: User;
+}
+
+export interface Profession {
+  professionID: number;
+  professionName: string;
+}
+
+export interface City {
+  cityID: number;
+  stateProvince: StateProvince;
+  cityName: string;
+}
+
+export interface StateProvince {
+  stateProvinceName: string;
+}
+
+export interface UserStatus {
+  userStatusID: number;
+  statusName: string;
+  statusDescription: string;
+}
+
+export interface UserInformation {
+  firstName: string;
+  lastName: string;
+  birthdate: string;
+  areaCode: string;
+  phoneNumber: string;
+}
+
