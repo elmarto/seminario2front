@@ -1,5 +1,4 @@
-export { Project } from './project';
-export { Role } from './role';
+export * from './models';
+export * from './prospects';
 export { ResponseMetadata } from './response-metadata';
 export { ResponseStatus } from './response-status';
-export { UserRegistration } from './user-registration';
