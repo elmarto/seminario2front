@@ -3,9 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegistrationService } from '../../../shared/services/registration.service';
 import { SexTypesService } from '../../../shared/services/sex-types.service';
 import { RolesService } from '../../../shared/services/roles.service';
-import { Role } from '../../../shared/interfaces/role';
-import { UserRegistration } from '../../../shared/interfaces/user-registration';
 import { SexType } from '../../../shared/interfaces/sex-type';
+import { Role } from '../../../shared/interfaces/models';
+import { UserRegistrationRequest } from '../../../shared/interfaces/prospects';
 
 @Component({
   selector: 'app-registration',
@@ -48,7 +48,7 @@ export class RegistrationComponent implements OnInit {
       phoneNumber: ['', Validators.required],
     });
 
-    this.rolesService.findVisible().subscribe(roles => this.roles = roles);
+    this.rolesService.findAll().subscribe(roles => this.roles = roles);
     this.sexTypesService.findAll().subscribe(sexTypes => this.sexTypes = sexTypes);
   }
 
@@ -58,7 +58,7 @@ export class RegistrationComponent implements OnInit {
 
     if (event.selectedIndex === 2 && !this.registered) {
 
-      const userRegistration: UserRegistration = {
+      const userRegistration: UserRegistrationRequest = {
         roleID: this.firstFormGroup.get('userRole').value,
         userEmail: this.firstFormGroup.get('userEmail').value,
         userPassword: this.firstFormGroup.get('userPassword').value,

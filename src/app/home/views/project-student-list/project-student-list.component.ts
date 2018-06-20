@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from 'app/shared';
+import { Project, ProjectService } from 'app/shared';
 
 @Component({
   selector: 'app-project-student-list',
@@ -8,11 +8,22 @@ import { Project } from 'app/shared';
 })
 export class ProjectStudentListComponent implements OnInit {
 
-  projects: Project[] = [];
+  projects: Project[] = [{
+    projectID: 1,
+    projectStatus: 1,
+    projectName: 'Busqueda de un gran profesor',
+    projectDescription: 'This is the description.',
+    registerDate: new Date()
+  }];
 
-  constructor() { }
+  constructor(
+    private projectService: ProjectService
+  ) { }
 
   ngOnInit() {
+    this.projectService.all().subscribe(response => {
+      this.projects = response.projects;
+    });
   }
 
 }
