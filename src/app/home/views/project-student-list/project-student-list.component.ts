@@ -8,7 +8,7 @@ import { Project } from 'app/shared';
 })
 export class ProjectStudentListComponent implements OnInit {
 
-  projects: Project[] = [{ id: 1}, {id: 2}];
+  projects: Project[] = [];
 
   constructor() { }
 

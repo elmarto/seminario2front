@@ -5,7 +5,7 @@
       <mat-vertical-stepper [linear]="true" (selectionChange)="onSelectionChange($event)" #stepper>
         <mat-step [optional]="false" [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Información</ng-template>
+            <ng-template matStepLabel>Información de cuenta</ng-template>
               <div fxLayout="column" fxFlex="100%">
                 <mat-form-field>
                   <mat-select placeholder="Quiero ser..." formControlName="userRole" required>
@@ -24,14 +24,54 @@
                 </mat-form-field>      
               </div>  
               <div fxLayout="column" fxFlex="100%" fxLayoutAlign="center bottom">
-                  <button mat-raised-button matStepperNext color="accent">CREAR CUENTA</button>
+                  <button mat-raised-button matStepperNext color="accent">CONTINUAR</button>
               </div>          
           </form>
         </mat-step>
+        <mat-step [optional]="false" [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Información básica</ng-template>
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <input matInput placeholder="Nombre" formControlName="firstName" required>
+                </mat-form-field>                
+              </div>
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <input matInput placeholder="Apellido" formControlName="lastName" required>
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <input matInput placeholder="Fecha Nacimiento (dd/mm/yyyy)" formControlName="birthdate" required>
+                </mat-form-field> 
+              </div>
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <mat-select placeholder="Sexo" formControlName="sexID" required>
+                    <mat-option *ngFor="let sexType of sexTypes" [value]="sexType.sexID">{{sexType.SexName}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>              
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <input matInput placeholder="Código de area" formControlName="areaCode" required>
+                </mat-form-field> 
+              </div>                              
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <input matInput placeholder="Teléfono" formControlName="phoneNumber" required>
+                </mat-form-field> 
+              </div>                                              
+              <div fxLayout="column" fxFlex="100%" fxLayoutAlign="center bottom">
+                  <button mat-raised-button matStepperNext color="accent">CREAR CUENTA</button>
+              </div>          
+          </form>
+        </mat-step>        
         <mat-step>
-          <ng-template matStepLabel>Activación</ng-template>
-          <h3>Activación de cuenta pendiente</h3>
-          <p>Se ha envíado un correo electrónico con las instrucciones para activar la cuenta a su cuenta.</p>
+          <ng-template matStepLabel>Listo!</ng-template>
+          <h3>Ha creado su cuenta</h3>
+          <p>Ya puede iniciar sesión ingresando sus credenciales <a routerLink="/login">Aquí</a></p>
         </mat-step>
       </mat-vertical-stepper>  
     </mat-card>

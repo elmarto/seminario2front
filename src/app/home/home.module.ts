@@ -14,10 +14,10 @@ import { LoginComponent } from './views/login/login.component';
 /* Services */
 import { RegistrationService } from '../shared/services/registration.service';
 import { RolesService } from '../shared/services/roles.service';
+import { SexTypesService } from '../shared/services/sex-types.service';
 import { ProjectStudentListComponent } from './views/project-student-list/project-student-list.component';
 import { ProjectStudentCreateComponent } from './views/project-student-create/project-student-create.component';
 import { ProjectProfessionalListComponent } from './views/project-professional-list/project-professional-list.component';
-
 
 @NgModule({
   imports: [
@@ -28,7 +28,8 @@ import { ProjectProfessionalListComponent } from './views/project-professional-l
   ],
   providers: [
     RegistrationService,
-    RolesService
+    RolesService,
+    SexTypesService
   ],
   declarations: [
     HomepageComponent,
