@@ -1,24 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { environment as env} from 'environments/environment';
-import { LoginRequest, LoginResponse } from 'app/shared';
+import { LoginRequest, LoginResponse, ResponseMetadata } from 'app/shared';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AuthService  {
-  token: string = null;
 
-  constructor(
-    private http: Http
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   login(request: LoginRequest): Observable<LoginResponse> {
-    console.log('service');
-    return this.http.post(`${env.apiUrl}/authentication.php/authenticateUser`, request).pipe(
-      map(response => this.token = response.json()),
-      catchError(this.handleError)
-    );
+    return this.httpClient.post<LoginResponse>(`${env.apiUrl}/authentication.php/authenticateUser`, request);
   }
 
   private handleError (error: Response | any) {

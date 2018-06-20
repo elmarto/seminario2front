@@ -1,4 +1,5 @@
 import { Project } from './models';
+import { ResponseStatus } from 'app/shared/interfaces';
 
 export interface UserRegistrationRequest {
     userEmail: string;
@@ -18,8 +19,8 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
+    status: ResponseStatus;
     token: string;
-    time: number;
 }
 
 export interface ProjectListRequest {

@@ -1,7 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent, FooterComponent } from './components';
 import { ProjectService, AuthService, AuthInterceptor } from './services';
+import { TokenService } from './services/token.service';
 
 
 @NgModule({
@@ -31,8 +32,9 @@ import { ProjectService, AuthService, AuthInterceptor } from './services';
   ],
   providers: [
     AuthService,
+    TokenService,
     ProjectService,
-    AuthInterceptor
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   exports: [
     CommonModule,

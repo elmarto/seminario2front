@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
+import { Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { environment as env} from 'environments/environment';
 import { ProjectListRequest, ProjectListResponse, AuthService } from 'app/shared';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ProjectService  {
 
-  constructor(private http: Http) { }
+  constructor(private httpClient: HttpClient) { }
 
   all(request?: ProjectListRequest): Observable<ProjectListResponse> {
-    return this.http.get(`${env.apiUrl}/projects.php/getProjectsByUserID`).pipe(
-      map(response => response.json()),
-      catchError(this.handleError)
-    );
+    return this.httpClient.get<any>(`${env.apiUrl}/projects.php/getProjectsByUserID`);
   }
 
   private handleError (error: Response | any) {

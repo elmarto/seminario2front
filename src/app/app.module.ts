@@ -19,7 +19,8 @@ import { StartupService } from './startup.service';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
-    HomeModule
+    HomeModule,
+    SharedModule
   ],
   providers: [StartupService],
   bootstrap: [AppComponent]

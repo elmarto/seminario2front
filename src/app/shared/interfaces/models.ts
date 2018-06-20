@@ -23,11 +23,6 @@ export interface ProjectCreateResponse {
   projectDescription: string;
 }
 
-export interface Profession {
-  professionID: number;
-  professionName: string;
-}
-
 export interface Budget {
   budgetID: number;
   project: Project;

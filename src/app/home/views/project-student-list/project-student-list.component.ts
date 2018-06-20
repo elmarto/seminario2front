@@ -8,13 +8,57 @@ import { Project, ProjectService } from 'app/shared';
 })
 export class ProjectStudentListComponent implements OnInit {
 
-  projects: Project[] = [{
-    projectID: 1,
-    projectStatus: 1,
-    projectName: 'Busqueda de un gran profesor',
-    projectDescription: 'This is the description.',
-    registerDate: new Date()
-  }];
+  projects: Project[] = [
+    {
+      projectID: 1,
+      projectStatus: 1,
+      projectName: 'Busqueda de un gran profesor',
+      projectDescription: 'This is the description.',
+      registerDate: new Date()
+    },
+    {
+      projectID: 1,
+      projectStatus: 1,
+      projectName: 'Busqueda de un gran profesor',
+      projectDescription: 'This is the description.',
+      registerDate: new Date()
+    },
+    {
+      projectID: 1,
+      projectStatus: 1,
+      projectName: 'Busqueda de un gran profesor',
+      projectDescription: 'This is the description.',
+      registerDate: new Date()
+    },
+    {
+      projectID: 1,
+      projectStatus: 1,
+      projectName: 'Busqueda de un gran profesor',
+      projectDescription: 'This is the description.',
+      registerDate: new Date()
+    },
+    {
+      projectID: 1,
+      projectStatus: 1,
+      projectName: 'Busqueda de un gran profesor',
+      projectDescription: 'This is the description.',
+      registerDate: new Date()
+    },
+    {
+      projectID: 1,
+      projectStatus: 1,
+      projectName: 'Busqueda de un gran profesor',
+      projectDescription: 'This is the description.',
+      registerDate: new Date()
+    },
+    {
+      projectID: 1,
+      projectStatus: 1,
+      projectName: 'Busqueda de un gran profesor',
+      projectDescription: 'This is the description.',
+      registerDate: new Date()
+    }
+  ];
 
   constructor(
     private projectService: ProjectService
@@ -22,7 +66,7 @@ export class ProjectStudentListComponent implements OnInit {
 
   ngOnInit() {
     this.projectService.all().subscribe(response => {
-      this.projects = response.projects;
+      //this.projects = response.projects;
     });
   }
 
