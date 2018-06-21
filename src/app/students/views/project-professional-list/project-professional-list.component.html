@@ -1,0 +1,16 @@
+<section class="project-container" fxLayout="row wrap" fxLayoutAlign="start">
+    <mat-divider></mat-divider>
+    <mat-card *ngFor="let project of projects" fxLayout="column" fxFlex.xs="100%" fxFlex="280px">
+      <mat-card-header>
+        <mat-card-title>projectName</mat-card-title>
+        <mat-card-subtitle>Te encontraron por la profesion professionName</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="assets/images/person.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>project.projectDescription</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>ENVIAR PRESUPUESTO</button>
+      </mat-card-actions>    
+    </mat-card>
+  </section>

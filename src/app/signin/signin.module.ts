@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 /* Modules */
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared';
-import { HomeRoutingModule } from './home-routing.module';
+import { SigninRoutingModule } from './signin-routing.module';
 import { NguCarouselModule } from '@ngu/carousel';
 
 /* Components */
-import { HomepageComponent } from './views/homepage/homepage.component';
 import { RegistrationComponent } from './views/registration/registration.component';
 import { LoginComponent } from './views/login/login.component';
 
@@ -15,15 +14,13 @@ import { LoginComponent } from './views/login/login.component';
 import { RegistrationService } from '../shared/services/registration.service';
 import { RolesService } from '../shared/services/roles.service';
 import { SexTypesService } from '../shared/services/sex-types.service';
-import { ProjectStudentListComponent } from './views/project-student-list/project-student-list.component';
-import { ProjectStudentCreateComponent } from './views/project-student-create/project-student-create.component';
-import { ProjectProfessionalListComponent } from './views/project-professional-list/project-professional-list.component';
+import { SigninHeaderComponent } from './views/signin-header/signin-header.component';
 
 @NgModule({
   imports: [
     HttpClientModule,
     SharedModule,
-    HomeRoutingModule,
+    SigninRoutingModule,
     NguCarouselModule
   ],
   providers: [
@@ -32,13 +29,10 @@ import { ProjectProfessionalListComponent } from './views/project-professional-l
     SexTypesService
   ],
   declarations: [
-    HomepageComponent,
     RegistrationComponent,
     LoginComponent,
-    ProjectStudentListComponent,
-    ProjectStudentCreateComponent,
-    ProjectProfessionalListComponent
+    SigninHeaderComponent
   ]
 })
-export class HomeModule {}
+export class SigninModule {}
 

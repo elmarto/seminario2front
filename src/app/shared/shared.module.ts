@@ -9,10 +9,9 @@ import { NguCarouselModule } from '@ngu/carousel';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material/material.module';
-import { HeaderComponent, FooterComponent } from './components';
+import { FooterComponent } from './components';
 import { ProjectService, AuthService, AuthInterceptor } from './services';
 import { TokenService } from './services/token.service';
-
 
 @NgModule({
   imports: [
@@ -27,7 +26,6 @@ import { TokenService } from './services/token.service';
     NguCarouselModule
   ],
   declarations: [
-    HeaderComponent,
     FooterComponent
   ],
   providers: [
@@ -46,7 +44,6 @@ import { TokenService } from './services/token.service';
     FlexLayoutModule,
     HttpClientModule,
     NguCarouselModule,
-    HeaderComponent,
     FooterComponent
   ],
   entryComponents: []

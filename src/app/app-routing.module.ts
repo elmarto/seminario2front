@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  // { path: '404', redirectTo: '' },
-  // { path: '**', redirectTo: '' }
+  { path: '', redirectTo: '/signin/login', pathMatch: 'full' }
 ];
 
 @NgModule({

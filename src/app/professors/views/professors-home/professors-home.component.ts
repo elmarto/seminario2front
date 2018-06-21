@@ -4,10 +4,10 @@ import { NguCarousel } from '@ngu/carousel';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  selector: 'app-professors-home',
+  templateUrl: './professors-home.component.html',
+  styleUrls: ['./professors-home.component.scss']
 })
-export class HomepageComponent {
+export class ProfessorsHomeComponent {
 
 }

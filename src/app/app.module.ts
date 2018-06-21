@@ -8,9 +8,10 @@ import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeModule } from './home';
+import { StudentsModule } from './students';
 import { SharedModule } from './shared';
 import { StartupService } from './startup.service';
+import { SigninModule } from './signin';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,8 @@ import { StartupService } from './startup.service';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
-    HomeModule,
+    SigninModule,
+    StudentsModule,
     SharedModule
   ],
   providers: [StartupService],
