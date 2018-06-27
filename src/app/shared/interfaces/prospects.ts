@@ -28,5 +28,11 @@ export interface ProjectListRequest {
 }
 
 export interface ProjectListResponse {
-    projects: Project[];
+    values: Project[];
+}
+
+export interface ProjectCreateResponse {
+    projectName: string;
+    projectDescription: string;
+    professionID: number;
 }

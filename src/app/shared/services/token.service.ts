@@ -9,12 +9,12 @@ export class TokenService {
 
   hasToken(): boolean {
 
-    return window.sessionStorage.getItem('token') !== undefined && window.sessionStorage.getItem('token') !== null;
+    return window.localStorage.getItem('token') !== undefined && window.localStorage.getItem('token') !== null;
   }
 
   getToken(): string {
 
-    return window.sessionStorage.getItem('token');
+    return window.localStorage.getItem('token');
   }
 
   getTokenInformation(): any {
@@ -35,11 +35,11 @@ export class TokenService {
 
   setToken(token: string): void {
 
-    window.sessionStorage.setItem('token', token);
+    window.localStorage.setItem('token', token);
   }
 
   removeToken(): void {
 
-    window.sessionStorage.removeItem('token');
+    window.localStorage.removeItem('token');
   }
 }
