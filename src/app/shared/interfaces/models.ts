@@ -6,23 +6,6 @@ export interface Project {
   registerDate: Date;
 }
 
-export interface ProjectCreateRequest {
-  userId: number;
-  projectName: string;
-  professionID: number;
-  projectDescription: string;
-}
-
-export interface ProjectCreateResponse {
-  projectID: number;
-  registerDate: Date;
-  client: Client;
-  profession: Profession;
-  projectStatus: ProjectStatus;
-  projectName: string;
-  projectDescription: string;
-}
-
 export interface Budget {
   budgetID: number;
   project: Project;

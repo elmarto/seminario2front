@@ -18,12 +18,16 @@ export class LoginComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
   userPassword: string = 'ADMIN';
 
-  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router) { 
+  constructor(
+    private authService: AuthService,
+    private tokenService: TokenService,
+    private router: Router
+  ) {
 
     /* Una home para cada rol (?) */
-    this.rolesHome.set(1, '/students/home');
-    this.rolesHome.set(2, '/students/home');
-    this.rolesHome.set(3, '/students/home');
+    this.rolesHome.set(1, '/students/list-projects');
+    this.rolesHome.set(2, '/students/list-projects');
+    this.rolesHome.set(3, '/students/list-projects');
     this.rolesHome.set(4, '/professionals/home');
   }
 

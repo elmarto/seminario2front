@@ -1,19 +1,20 @@
+<h2 mat-dialog-title>Nueva Búsqueda</h2>
 <section class="project-container" fxLayout="row wrap" fxLayoutAlign="start">
   <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
-    <div fxLayout="row wrap" fxLayout.xs="column">
-      <mat-form-field class="field" fxFlex="48" fxFlex.xs="100">
-        <input matInput formControlName="projectName" placeholder="Nombre">
+    <div fxLayout="column">
+      <mat-form-field class="field" fxFlex="100">
+        <input matInput formControlName="projectName" placeholder="Quiero tomar clases de...">
         <mat-error *ngIf="form.get('projectName').hasError('required')">Este campo es requerido</mat-error>
         <mat-error *ngIf="form.get('projectName').hasError('maxlength')">Debe tener menos de 50 caracteres.</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="field" fxFlex="48" fxFlex.xs="100">
-        <input matInput formControlName="projectDescription" placeholder="Descripcion">
+      <mat-form-field class="field" fxFlex="100">
+        <textarea matInput style="height: 100px" formControlName="projectDescription" placeholder="Descripcion"></textarea>
         <mat-error *ngIf="form.get('projectDescription').hasError('required')">Este campo es requerido</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="field" fxFlex="48" fxFlex.xs="100">
-        <mat-select formControlName="professionID" placeholder="Profesión">
+      <mat-form-field class="field" fxFlex="100">
+        <mat-select formControlName="professionID" placeholder="Asignatura">
           <mat-option *ngFor="let profession of professions" [value]="profession.professionID">{{ profession.professionName }}</mat-option>
         </mat-select>
         <mat-error class="error-combo" *ngIf="form.get('professionID').touched && form.get('professionID').hasError('required')">Este campo es requerido</mat-error>
@@ -21,7 +22,7 @@
     </div>
 
     <div fxLayoutAlign="end center" fxLayoutGap="1em">
-      <button mat-button color="accent" type="button" [routerLink]="['/ofertas']">CANCELAR</button>
+      <button mat-button color="accent" type="button" (click)="close()">CANCELAR</button>
       <button mat-raised-button type="submit" [disabled]="!form.valid" color="accent">CREAR</button>
     </div>
 

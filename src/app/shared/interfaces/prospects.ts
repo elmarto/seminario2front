@@ -1,4 +1,4 @@
-import { Project } from './models';
+import { Project, Client, Profession, ProjectStatus } from './models';
 import { ResponseStatus } from 'app/shared/interfaces';
 
 export interface UserRegistrationRequest {
@@ -31,8 +31,18 @@ export interface ProjectListResponse {
     values: Project[];
 }
 
+export interface ProjectCreateRequest {
+    projectName: string;
+    professionID: number;
+    projectDescription: string;
+}
+
 export interface ProjectCreateResponse {
+    projectID: number;
+    registerDate: Date;
+    client: Client;
+    profession: Profession;
+    projectStatus: ProjectStatus;
     projectName: string;
     projectDescription: string;
-    professionID: number;
 }

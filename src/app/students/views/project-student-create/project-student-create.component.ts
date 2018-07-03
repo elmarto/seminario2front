@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Profession, ProjectService } from 'app/shared';
-import { MatSnackBar } from '@angular/material';
+import { Profession, ProjectService, Project, ProjectCreateRequest } from 'app/shared';
+import { MatSnackBar, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-project-student-create',
@@ -18,9 +17,9 @@ export class ProjectStudentCreateComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
     private snackBar: MatSnackBar,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    public dialogRef: MatDialogRef<ProjectStudentCreateComponent>
   ) {
     this.setReactiveForms();
   }
@@ -38,16 +37,25 @@ export class ProjectStudentCreateComponent implements OnInit {
 
   onSubmit() {
     const ctrl = this.form.controls;
-    const request = {
+    const request: ProjectCreateRequest = {
       projectName: ctrl.projectName.value,
       projectDescription: ctrl.projectDescription.value,
       professionID: ctrl.professionID.value
     };
     this.projectService.create(request).subscribe(response => {
       this.snackBar.open('Solicitud creada exitosamente', null, { duration: 2000 });
-      this.router.navigate(['/students/list-projects']);
+      const project: Project = {
+        projectID: 0,
+        projectStatus: 0,
+        projectName: request.projectName,
+        projectDescription: request.projectDescription,
+        registerDate: new Date()
+      };
+      this.dialogRef.close(project);
     });
   }
 
-
+  close() {
+    this.dialogRef.close();
+  }
 }

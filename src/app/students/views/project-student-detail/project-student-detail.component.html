@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Detalles</h2>
+<section class="project-container" fxLayout="column" fxLayoutAlign="start">
+  <div fxLayout="column" fxLayoutGap="1em">
+    <div fxLayout="column">
+      <label>Búsqueda de clases de...</label>
+      <span>{{project.projectName}}</span>
+    </div>
+
+    <div fxLayout="column">
+      <span>{{project.projectDescription}}</span>
+    </div>
+
+    <!-- <mat-form-field class="field" fxFlex="100">
+      <input matInput disabled formControlName="projectName" placeholder="Quiero tomar clases de...">
+      <mat-error *ngIf="form.get('projectName').hasError('required')">Este campo es requerido</mat-error>
+      <mat-error *ngIf="form.get('projectName').hasError('maxlength')">Debe tener menos de 50 caracteres.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="field" fxFlex="100">
+      <textarea matInput disabled formControlName="projectDescription" placeholder="Descripcion"></textarea>
+      <mat-error *ngIf="form.get('projectDescription').hasError('required')">Este campo es requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="field" fxFlex="100">
+      <mat-select disabled formControlName="professionID" placeholder="Profesión">
+        <mat-option *ngFor="let profession of professions" [value]="profession.professionID">{{ profession.professionName }}</mat-option>
+      </mat-select>
+      <mat-error class="error-combo" *ngIf="form.get('professionID').touched && form.get('professionID').hasError('required')">Este campo es requerido</mat-error>
+    </mat-form-field> -->
+  </div>
+
+  <mat-dialog-actions fxLayoutAlign="end center" fxLayoutGap="1em">
+    <button mat-button color="accent" type="button" (click)="close()">CERRAR</button>
+    <!-- <button mat-raised-button type="submit" [disabled]="!form.valid" color="accent">CREAR</button> -->
+  </mat-dialog-actions>
+</section>

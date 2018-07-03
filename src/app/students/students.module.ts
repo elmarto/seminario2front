@@ -12,6 +12,8 @@ import { ProjectStudentCreateComponent } from './views/project-student-create/pr
 import { ProjectProfessionalListComponent } from './views/project-professional-list/project-professional-list.component';
 import { StudentsHomeComponent } from './views/students-home/students-home.component';
 import { StudentsHeaderComponent } from './views/students-header/students-header.component';
+import { ProjectStudentDetailComponent } from './views/project-student-detail/project-student-detail.component';
+import { ProjectStudentEditComponent } from './views/project-student-create/project-student-edit.component';
 
 @NgModule({
   imports: [
@@ -27,7 +29,14 @@ import { StudentsHeaderComponent } from './views/students-header/students-header
     StudentsHomeComponent,
     ProjectStudentListComponent,
     ProjectStudentCreateComponent,
+    ProjectStudentEditComponent,
+    ProjectStudentDetailComponent,
     ProjectProfessionalListComponent
+  ],
+  entryComponents: [
+    ProjectStudentCreateComponent,
+    ProjectStudentEditComponent,
+    ProjectStudentDetailComponent
   ]
 })
 export class StudentsModule {}
