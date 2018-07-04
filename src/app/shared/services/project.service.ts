@@ -3,8 +3,8 @@ import { Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { environment as env} from 'environments/environment';
-import { ProjectListRequest, ProjectListResponse, AuthService } from 'app/shared';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { ProjectListRequest, ProjectListResponse } from '../interfaces/prospects';
 
 @Injectable()
 export class ProjectService  {

@@ -71,7 +71,9 @@ export class RegistrationComponent implements OnInit {
       };
 
       this.registrationService.registerUser(userRegistration).subscribe(response => {
-        this.registered = true;
+        if (response.status.code === 200) {
+          this.registered = true;
+        }
       });
     }
   }

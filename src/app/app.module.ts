@@ -12,6 +12,7 @@ import { StudentsModule } from './students';
 import { SharedModule } from './shared';
 import { StartupService } from './startup.service';
 import { SigninModule } from './signin';
+import { ProfessorsModule } from './professors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { SigninModule } from './signin';
     SharedModule,
     SigninModule,
     StudentsModule,
+    ProfessorsModule,
     SharedModule
   ],
   providers: [StartupService],

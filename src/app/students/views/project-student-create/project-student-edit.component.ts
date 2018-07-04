@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Profession, ProjectService, Project } from 'app/shared';
 import { MatSnackBar, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { ProjectService } from '../../../shared';
+import { Profession, Project } from '../../../shared/interfaces/models';
 
 @Component({
   selector: 'app-project-student-edit',

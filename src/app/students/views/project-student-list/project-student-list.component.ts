@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Project, ProjectService, ProjectCreateResponse } from 'app/shared';
+import { ProjectService } from 'app/shared';
 import { MatDialog } from '@angular/material';
 import { ProjectStudentCreateComponent } from '../project-student-create/project-student-create.component';
 import { ProjectStudentDetailComponent } from '../project-student-detail/project-student-detail.component';
 import { ProjectStudentEditComponent } from '../project-student-create/project-student-edit.component';
+import { Project } from '../../../shared/interfaces/models';
 
 @Component({
   selector: 'app-project-student-list',
@@ -30,7 +31,7 @@ export class ProjectStudentListComponent implements OnInit {
 
   openEditDialog(project): void {
     const dialogRef = this.dialog.open(ProjectStudentEditComponent);
-    dialogRef.componentInstance.project = project;
+    //dialogRef.componentInstance.project = project;
   }
 
   openCreateDialog(): void {

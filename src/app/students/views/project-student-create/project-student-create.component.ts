@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Profession, ProjectService, Project, ProjectCreateRequest } from 'app/shared';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
+import { ProjectService } from '../../../shared/services';
+import { Profession, Project } from '../../../shared/interfaces/models';
+import { ProjectCreateRequest } from '../../../shared/interfaces/prospects';
 
 @Component({
   selector: 'app-project-student-create',

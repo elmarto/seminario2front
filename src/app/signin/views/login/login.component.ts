@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService, LoginRequest } from 'app/shared';
 import { Router } from '@angular/router';
 import { TokenService } from '../../../shared/services/token.service';
+import { AuthService } from '../../../shared';
+import { LoginRequest } from '../../../shared/interfaces/prospects';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.rolesHome.set(1, '/students/list-projects');
     this.rolesHome.set(2, '/students/list-projects');
     this.rolesHome.set(3, '/students/list-projects');
-    this.rolesHome.set(4, '/professionals/home');
+    this.rolesHome.set(4, '/professors/home');
   }
 
   ngOnInit() { }
@@ -44,6 +45,6 @@ export class LoginComponent implements OnInit {
         /* Redirecciono a donde corresponda */
         this.router.navigateByUrl(this.rolesHome.get(parseInt(tokenInformation.data.userRoles[0].roleID, 10)));
       }
-    });
+    }, err => { console.log(err); });
   }
 }

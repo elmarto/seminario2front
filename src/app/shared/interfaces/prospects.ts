@@ -1,5 +1,5 @@
 import { Project, Client, Profession, ProjectStatus } from './models';
-import { ResponseStatus } from 'app/shared/interfaces';
+import { ResponseStatus } from './response-status';
 
 export interface UserRegistrationRequest {
     userEmail: string;

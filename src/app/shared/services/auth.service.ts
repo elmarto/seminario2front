@@ -3,8 +3,8 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { environment as env} from 'environments/environment';
-import { LoginRequest, LoginResponse, ResponseMetadata } from 'app/shared';
 import { HttpClient } from '@angular/common/http';
+import { LoginRequest, LoginResponse } from '../interfaces/prospects';
 
 @Injectable()
 export class AuthService  {
