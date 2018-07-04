@@ -4,6 +4,7 @@ import { MatSnackBar, MatDialogRef } from '@angular/material';
 import { ProjectService } from '../../../shared/services';
 import { Profession, Project } from '../../../shared/interfaces/models';
 import { ProjectCreateRequest } from '../../../shared/interfaces/prospects';
+import { ProfessionService } from 'app/shared/services/profession.service';
 
 @Component({
   selector: 'app-project-student-create',
@@ -13,17 +14,17 @@ import { ProjectCreateRequest } from '../../../shared/interfaces/prospects';
 export class ProjectStudentCreateComponent implements OnInit {
 
   form: FormGroup;
-  professions: Profession[] = [
-    { professionID: 1, professionName: 'Albañiles' }
-  ];
+  professions: Profession[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private projectService: ProjectService,
+    private professionService: ProfessionService,
     public dialogRef: MatDialogRef<ProjectStudentCreateComponent>
   ) {
     this.setReactiveForms();
+    this.professionService.findAll().subscribe(professions => this.professions = professions);
   }
 
   ngOnInit() {

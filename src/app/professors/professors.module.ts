@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 /* Modules */
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from '../shared';
+import { SharedModule } from '../shared/shared.module';
 import { NguCarouselModule } from '@ngu/carousel';
 import { ProfessorsRoutingModule } from './professors-routing.module';
 

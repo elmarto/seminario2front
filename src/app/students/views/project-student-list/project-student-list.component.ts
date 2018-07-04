@@ -31,7 +31,7 @@ export class ProjectStudentListComponent implements OnInit {
 
   openEditDialog(project): void {
     const dialogRef = this.dialog.open(ProjectStudentEditComponent);
-    //dialogRef.componentInstance.project = project;
+    // dialogRef.componentInstance.project = project;
   }
 
   openCreateDialog(): void {
