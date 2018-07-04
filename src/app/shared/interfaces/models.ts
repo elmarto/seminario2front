@@ -61,6 +61,7 @@ export interface City {
 }
 
 export interface StateProvince {
+  stateProvinceID: number;
   stateProvinceName: string;
 }
 
@@ -77,7 +78,6 @@ export interface UserInformation {
   areaCode: string;
   phoneNumber: string;
 }
-
 
 export interface Role {
   roleID: number;

@@ -5,12 +5,26 @@ export interface UserRegistrationRequest {
     userEmail: string;
     userPassword: string;
     roleID: number;
+}
+
+export interface UserInformationRequest {
     firstName: string;
     lastName: string;
     birthdate: Date;
     sexID: number;
     areaCode: string;
     phoneNumber: string;
+}
+
+export interface ClientLocationRequest {
+    stateProvinceID: number;
+    cityID: number;
+    streetAddress: string;
+}
+
+export interface ProfessionalWorkplaceRequest {
+    stateProvinceID: number;
+    cityID: number;
 }
 
 export interface LoginRequest {

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
 
-    /* Una home para cada rol (?) */
+    /* Una home para cada rol */
     this.rolesHome.set(1, '/students/list-projects');
     this.rolesHome.set(2, '/students/list-projects');
     this.rolesHome.set(3, '/students/list-projects');
