@@ -22,9 +22,10 @@ export interface ClientLocationRequest {
     streetAddress: string;
 }
 
-export interface ProfessionalWorkplaceRequest {
+export interface ProfessionalLocationRequest {
     stateProvinceID: number;
     cityID: number;
+    streetAddress: string;
 }
 
 export interface LoginRequest {

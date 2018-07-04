@@ -11,7 +11,7 @@ import { UserRegistrationRequest,
   LoginRequest,
   UserInformationRequest,
   ClientLocationRequest,
-  ProfessionalWorkplaceRequest } from '../../../shared/interfaces/prospects';
+  ProfessionalLocationRequest} from '../../../shared/interfaces/prospects';
 import { Router } from '@angular/router';
 
 @Component({
@@ -114,9 +114,10 @@ export class RegistrationComponent implements OnInit {
         streetAddress: this.thirdFormGroup.get('streetAddress').value
       };
 
-      const professionalWorkplaceRequest: ProfessionalWorkplaceRequest = {
+      const professionalLocationRequest: ProfessionalLocationRequest = {
         stateProvinceID: this.thirdFormGroup.get('stateProvinceID').value,
-        cityID: this.thirdFormGroup.get('cityID').value
+        cityID: this.thirdFormGroup.get('cityID').value,
+        streetAddress: this.thirdFormGroup.get('streetAddress').value
       };
 
       this.registrationService.registerUser(userRegistrationRequest).subscribe(userRegistrationResponse => {
@@ -128,6 +129,9 @@ export class RegistrationComponent implements OnInit {
           this.authService.login(loginRequest).subscribe(loginResponse => {
             if (loginResponse.status.code === 200) {
               /* Guardo el token */
+              if (this.tokenService.hasToken()) {
+                this.tokenService.removeToken();
+              }
               this.tokenService.setToken(loginResponse.token);
               /* Obtengo un rol al azar */
               const tokenInformation = this.tokenService.getTokenInformation();
@@ -140,8 +144,8 @@ export class RegistrationComponent implements OnInit {
                       clientLocationResponse => this.router.navigateByUrl(this.rolesHome.get(userRoleID))
                     );
                   } else if (userRoleID === 4) {
-                    this.registrationService.registerProfessionalWorkplace(clientLocationRequest).subscribe(
-                      clientLocationResponse => this.router.navigateByUrl(this.rolesHome.get(userRoleID))
+                    this.registrationService.registerProfessionalLocation(professionalLocationRequest).subscribe(
+                      professionalLocationResponse => this.router.navigateByUrl(this.rolesHome.get(userRoleID))
                     );
                   }
                 }
