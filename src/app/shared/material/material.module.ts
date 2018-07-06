@@ -3,7 +3,8 @@ import { MatNativeDateModule, MatSelectModule, MatDialogModule, MatSnackBarModul
   MatSidenavModule, MatButtonModule, MatIconModule, MatTableModule, MatDatepickerModule,
   MatCheckboxModule, MatInputModule, MatButtonToggleModule, MatCardModule, MatProgressSpinnerModule,
   MatTooltipModule, MatRadioModule, MatGridListModule, MatTabsModule, MatPaginatorModule, MatChipsModule,
-  MatSliderModule, MatExpansionModule, MatStepperModule, MatDividerModule, MatMenuModule} from '@angular/material';
+  MatSliderModule, MatExpansionModule, MatStepperModule, MatDividerModule, MatMenuModule, MatListModule,
+  MatBadgeModule } from '@angular/material';
 
   const MAT_MODULES = [
     MatNativeDateModule,
@@ -32,7 +33,9 @@ import { MatNativeDateModule, MatSelectModule, MatDialogModule, MatSnackBarModul
     MatStepperModule,
     MatInputModule,
     MatDividerModule,
-    MatMenuModule
+    MatMenuModule,
+    MatListModule,
+    MatBadgeModule
   ];
 
 @NgModule({

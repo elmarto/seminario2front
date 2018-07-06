@@ -5,6 +5,7 @@ import { ProjectStudentCreateComponent } from '../project-student-create/project
 import { ProjectStudentDetailComponent } from '../project-student-detail/project-student-detail.component';
 import { ProjectStudentEditComponent } from '../project-student-create/project-student-edit.component';
 import { Project } from '../../../shared/interfaces/models';
+import { BudgetService } from '../../../shared/services/budget.service';
 
 @Component({
   selector: 'app-project-student-list',
@@ -17,15 +18,31 @@ export class ProjectStudentListComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
+    private budgetService: BudgetService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit() {
-    this.projectService.all().subscribe(response => this.projects = response.values);
+    this.projectService.all().subscribe(response => {
+      this.projects = response.values;
+      setInterval(this.checkForBudgets.bind(this), 1000);
+    });
+  }
+
+  checkForBudgets() {
+    if (this.projects && this.projects.length) {
+      this.projects.forEach(project => {
+        this.budgetService.findByProjectId(project.projectID).subscribe(budgets => {
+          if ((project.budgets && project.budgets.length !== budgets.length || !project.budgets) ) {
+            project.budgets = budgets;
+          }
+        });
+      });
+    }
   }
 
   openDetailDialog(project): void {
-    const dialogRef = this.dialog.open(ProjectStudentDetailComponent);
+    const dialogRef = this.dialog.open(ProjectStudentDetailComponent, { width: '80%' });
     dialogRef.componentInstance.project = project;
   }
 

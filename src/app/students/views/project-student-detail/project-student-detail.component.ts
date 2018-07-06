@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjectService } from 'app/shared';
-import { MatSnackBar, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Project, Profession } from '../../../shared/interfaces/models';
+import { MatSnackBar, MatDialogRef, MatSelectChange } from '@angular/material';
+import { Project, Budget } from '../../../shared/interfaces/models';
+import { BudgetService } from 'app/shared/services/budget.service';
 
 @Component({
   selector: 'app-project-student-detail',
@@ -13,19 +12,19 @@ import { Project, Profession } from '../../../shared/interfaces/models';
 export class ProjectStudentDetailComponent implements OnInit {
 
   project: Project = null;
-  professions: Profession[] = [
-    { professionID: 1, professionName: 'Albañiles' }
-  ];
+  budgets: Budget[] = [];
+  selectedBudget: Budget = null;
 
   constructor(
-    private formBuilder: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar,
-    private projectService: ProjectService,
+    private budgetService: BudgetService,
     public dialogRef: MatDialogRef<ProjectStudentDetailComponent>
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
+    this.budgetService.findByProjectId(this.project.projectID).subscribe(budgets => this.budgets = budgets);
   }
 
   onSubmit() {
@@ -34,5 +33,9 @@ export class ProjectStudentDetailComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  onBudgetSelected(budget: Budget) {
+    this.selectedBudget = budget;
   }
 }

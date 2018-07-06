@@ -3,7 +3,7 @@
     
     <button mat-button type="button" class="header-sector" (click)="toggleUnfold('sports')">
       <div fxLayoutAlign="center center" fxLayoutGap="5px">
-        <img src="/assets/images/logo.png" style="height: 55px;">
+        <img src="/assets/images/logo.png" style="height: 40px; filter: brightness(1130%) hue-rotate(50deg);">
       </div>
     </button>
   </div>
@@ -11,9 +11,10 @@
   <div fxFlex></div>
 
   <div class="header-menu actions" fxLayoutAlign="end center">
-    <button mat-button type="button" class="header-sector" (click)="logout()">
-      <i class="material-icons">person_outline</i>
-      <span>Cerrar sesión</span>
-    </button>
+    <div style="padding-right: 0.5em;">
+      <button mat-button type="button" class="logout" (click)="logout()">
+        <span>Cerrar Sesión</span>
+      </button>
+    </div>
   </div>
 </header>

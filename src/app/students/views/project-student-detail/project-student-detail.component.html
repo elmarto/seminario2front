@@ -1,32 +1,40 @@
-<h2 mat-dialog-title>Detalles</h2>
-<section class="project-container" fxLayout="column" fxLayoutAlign="start">
-  <div fxLayout="column" fxLayoutGap="1em">
-    <div fxLayout="column">
-      <label>Búsqueda de clases de...</label>
-      <span>{{project.projectName}}</span>
+<h2 mat-dialog-title>Clases de {{project.projectName}}</h2>
+<section class="project-container" fxLayout="column" fxLayoutAlign="start start">
+  <div fxLayout="row" fxLayoutAlign="center top" fxLayoutGap="1em">
+    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="1em">
+  
+      <div fxLayout="column">
+        <span>{{project.projectDescription}}</span>
+      </div>
+
+      <div fxLayout="column">
+        <strong>Propuestas</strong>
+        <mat-list>
+          <mat-list-item *ngFor="let budget of budgets" (click)="onBudgetSelected(budget)" fxLayoutAlign="space-between center">
+            <h3 matLine> {{budget.firstName}} {{budget.lastName}} </h3>
+            <mat-icon>arrow_right</mat-icon>
+          </mat-list-item>
+        </mat-list>
+      </div>  
+      
+      <div *ngIf="selectedBudget">
+        {{selectedBudget.amount | currency}}
+      </div>
     </div>
 
-    <div fxLayout="column">
-      <span>{{project.projectDescription}}</span>
-    </div>
+    <!-- <div fxLayout="column">
+      <h2>Propuestas</h2>
 
-    <!-- <mat-form-field class="field" fxFlex="100">
-      <input matInput disabled formControlName="projectName" placeholder="Quiero tomar clases de...">
-      <mat-error *ngIf="form.get('projectName').hasError('required')">Este campo es requerido</mat-error>
-      <mat-error *ngIf="form.get('projectName').hasError('maxlength')">Debe tener menos de 50 caracteres.</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="field" fxFlex="100">
-      <textarea matInput disabled formControlName="projectDescription" placeholder="Descripcion"></textarea>
-      <mat-error *ngIf="form.get('projectDescription').hasError('required')">Este campo es requerido</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="field" fxFlex="100">
-      <mat-select disabled formControlName="professionID" placeholder="Profesión">
-        <mat-option *ngFor="let profession of professions" [value]="profession.professionID">{{ profession.professionName }}</mat-option>
-      </mat-select>
-      <mat-error class="error-combo" *ngIf="form.get('professionID').touched && form.get('professionID').hasError('required')">Este campo es requerido</mat-error>
-    </mat-form-field> -->
+      <mat-accordion>
+          <mat-expansion-panel *ngFor="let budget of budgets">
+            <mat-expansion-panel-header>
+              <mat-panel-title>Diego Armando</mat-panel-title>
+              <mat-panel-description>$390</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Muchos detalles</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+    </div> -->
   </div>
 
   <mat-dialog-actions fxLayoutAlign="end center" fxLayoutGap="1em">

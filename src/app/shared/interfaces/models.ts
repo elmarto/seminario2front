@@ -4,15 +4,24 @@ export interface Project {
   projectName: string;
   projectDescription: string;
   registerDate: Date;
+  budgets?: Budget[];
 }
 
 export interface Budget {
   budgetID: number;
-  project: Project;
-  professional: Professional;
-  amount: number;
+  amount: string;
+  budgetStatusID: string;
+  comments: string;
+  firstName: string;
+  lastName: string;
+  professionalID: string;
+  projectID: string;
   requestDate: Date;
-  budgetStatus: BudgetStatus;
+  sexCode: string;
+  sexID: string;
+  sexName: string;
+  statusDescription: string;
+  statusName: string;
 }
 
 export interface BudgetStatus {
@@ -84,3 +93,4 @@ export interface Role {
   roleName: string;
   roleDescription: string;
 }
+

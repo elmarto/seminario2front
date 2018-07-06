@@ -13,6 +13,7 @@ import { FooterComponent } from './components';
 import { ProjectService, AuthService, AuthInterceptor } from './services';
 import { TokenService } from './services/token.service';
 import { ProfessionService } from './services/profession.service';
+import { BudgetService } from 'app/shared/services/budget.service';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { ProfessionService } from './services/profession.service';
     TokenService,
     ProjectService,
     ProfessionService,
+    BudgetService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   exports: [

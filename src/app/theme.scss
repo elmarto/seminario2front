@@ -43,7 +43,7 @@ $mat-velvet-red: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 $app-primary: mat-palette($mat-blue-grey);
-$app-accent:  mat-palette($mat-velvet-red);
+$app-accent:  mat-palette($mat-pink);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $app-theme: mat-light-theme($app-primary, $app-accent);

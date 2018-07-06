@@ -30,14 +30,18 @@ body {
   font-weight: 300;
   margin: 0;
   padding: 0;
-  background: $main-background-color;
+  background: url('/assets/images/bg.jpg');
+    background-size: cover;
+    background-color: rgba(200, 200, 200, 1) center center;
+    background-blend-mode: overlay;
   
   #app-content {
-    color: $primary-text-color;
+    color: white;
     background: $main-background-color;
     margin: 0 auto;
     min-height: calc(100% - #{$header-height});
     padding-top: calc(#{$header-height});
+    background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);
   }
 
   a {
