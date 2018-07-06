@@ -64,6 +64,33 @@
                 </mat-form-field> 
               </div>                                              
               <div fxLayout="column" fxFlex="100%" fxLayoutAlign="center bottom">
+                  <button mat-raised-button matStepperNext color="accent">CONTINUAR</button>
+              </div>          
+          </form>
+        </mat-step>        
+        <mat-step [optional]="false" [stepControl]="thirdFormGroup">
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Información de úbicación</ng-template>
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <mat-select placeholder="Provincia" formControlName="stateProvinceID" (selectionChange)="onChangeStateProvince()" required>
+                    <mat-option *ngFor="let stateProvince of stateProvinces" [value]="stateProvince.stateProvinceID">{{stateProvince.stateProvinceName}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <mat-select placeholder="Ciudad" formControlName="cityID" required>
+                    <mat-option *ngFor="let city of cities" [value]="city.cityID">{{city.cityName}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxFlex="100%">
+                <mat-form-field>
+                  <input matInput placeholder="Calle" formControlName="streetAddress" required>
+                </mat-form-field> 
+              </div>
+              <div fxLayout="column" fxFlex="100%" fxLayoutAlign="center bottom">
                   <button mat-raised-button matStepperNext color="accent">CREAR CUENTA</button>
               </div>          
           </form>
