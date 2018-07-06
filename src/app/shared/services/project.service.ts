@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Response, Headers } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
 import { environment as env} from 'environments/environment';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ProjectListRequest, ProjectListResponse } from '../interfaces/prospects';
 
 @Injectable()
@@ -12,6 +11,10 @@ export class ProjectService  {
 
   all(request?: ProjectListRequest): Observable<ProjectListResponse> {
     return this.httpClient.get<any>(`${env.apiUrl}/projects.php/getProjectsByUserID`);
+  }
+
+  delete(request: number): Observable<ProjectListResponse> {
+    return this.httpClient.delete<any>(`${env.apiUrl}/projects.php/getProjectsByUserID/${request}` );
   }
 
   create(request): Observable<any> {

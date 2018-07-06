@@ -1,6 +1,11 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center">
   <div fxLayout="column" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="500px">
-    <h2>Crear Mi Cuenta</h2>
+    <div fxLayout fxLayoutAlign="start center" fxLayoutGap="1em">
+      <button [routerLink]="['/signin/login']" mat-icon-button fxLayoutAlign="center center">
+        <i class="material-icons">arrow_back_ios</i>
+      </button>
+      <h2>Crear Mi Cuenta</h2>
+    </div>
     <mat-card>
       <mat-vertical-stepper [linear]="true" (selectionChange)="onSelectionChange($event)" #stepper>
         <mat-step [optional]="false" [stepControl]="firstFormGroup">

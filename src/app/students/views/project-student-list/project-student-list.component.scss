@@ -2,13 +2,20 @@
 
 .project-container { margin: 2em 0 0 2em; }
 .mat-card { 
-  margin: 0 2em 2em 0; 
+  margin: 0em 2em 2em 0; 
+  padding-top: 2.5em;
   position: relative;
 
-  .option-button {
+  .card-header {
+    padding-left: 1em;
+    margin-top: -1em;
     position: absolute;
+    width: 100%;
+    left: 0;
     top: 0;
-    right: 0;
+    background: #455a64;
+    color: white;
+    font-family: $secondary-font;
   }
 
   .notifications {
