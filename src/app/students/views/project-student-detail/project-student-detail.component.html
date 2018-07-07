@@ -1,34 +1,45 @@
-<h2 mat-dialog-title>Clases de {{project.projectName}}</h2>
-<section style="height: 400px;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
-  <div fxLayout="row" fxLayoutAlign="center top" fxLayoutGap="1em">
-    
-    <div *ngIf="!selectedBudget" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="1em">
-      <div fxLayout="column">
-        <span>{{project.projectDescription}}</span>
-      </div>
-      <div fxLayout="column">
-        <strong>Propuestas</strong>
-        <mat-list>
-          <mat-list-item *ngFor="let budget of budgets" (click)="onBudgetSelected(budget)">
-            <div fxLayoutAlign="space-between center">
-              <h3 matLine> {{budget.firstName}} {{budget.lastName}} </h3>
+<div *ngIf="!selectedBudget">
+  <h2 mat-dialog-title>Clases de {{project.projectName}}</h2>
+  
+  <section style="height: 400px;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
+    <div fxLayout="row" fxLayoutAlign="center top" fxLayoutGap="1em">
+      
+      <div *ngIf="!selectedBudget" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="1em">
+        <div fxLayout="column">
+          <span>{{project.projectDescription}}</span>
+        </div>
+        <div fxLayout="column" style="width: 100%">
+          <h3>Propuestas</h3>
+  
+          <ul class="budget-list">
+            <li class="budget-item" *ngFor="let budget of budgets" (click)="onBudgetSelected(budget)" fxLayoutAlign="space-between center" fxFlex>
+              <div fxLayout="column">
+                <p class="budget-name">{{budget.firstName}} {{budget.lastName}}</p>
+                <i class="budget-amount">{{budget.amount | currency}}</i>
+              </div>
               <mat-icon>keyboard_arrow_right</mat-icon>
-            </div>
-          </mat-list-item>
-        </mat-list>
-      </div>  
+            </li>
+          </ul>
+        </div>  
+      </div>
+  
     </div>
+  </section>
+</div>
 
-    <div *ngIf="selectedBudget">
+<div *ngIf="selectedBudget">
+  <h2 mat-dialog-title>Propuesta de Clase</h2>
+
+  <section style="height: 400px;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
+    <div fxLayout="column" fxLayoutAlign="center top" fxLayoutGap="1em">
       <h3>Propuesta de {{selectedBudget.firstName}} {{selectedBudget.lastName}}</h3>
       <mat-list>
-        <mat-list-item>
-          Honorarios: {{selectedBudget.amount | currency}}
-        </mat-list-item>
+        <mat-list-item>Honorarios: {{selectedBudget.amount | currency}}</mat-list-item>
+        <mat-list-item>{{selectedBudget.comments}}</mat-list-item>
       </mat-list>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <mat-dialog-actions fxLayoutAlign="end center" fxLayoutGap="1em">
   <button mat-button *ngIf="!selectedBudget" color="accent" type="button" (click)="close()">CERRAR</button>
