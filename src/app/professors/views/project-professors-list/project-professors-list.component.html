@@ -1,29 +1,32 @@
 <div class="title-container" fxLayoutAlign="space-between center">
-  <h1>Búsquedas en las que apareciste</h1>
+  <h1>Solicitudes en las que apareciste</h1>
 </div>
 
-<section class="project-container" fxLayout="row wrap" fxLayoutAlign="start">
+<section class="project-container" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutAlign.lt-md="center">
   <mat-card *ngFor="let project of projects" (click)="openDetailDialog(project)" fxLayout="column" fxFlex.xs="100%" fxFlex="280px">
     <mat-card-header fxLayoutAlign="space-between">
-      <mat-card-title>{{project.projectName}}</mat-card-title>
-      <mat-card-subtitle>
-        <div *ngIf="!notifications"><i>No tienes respuestas aún</i></div>
-        <div *ngIf="notifications"><i>¡Tienes nuevas respuestas!</i> <span class="notifications">{{5}}</span></div>
-      </mat-card-subtitle>
-      <button class="option-button" type="button" mat-icon-button (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"><i class="material-icons">more_vert</i></button>
+      <div class="card-header" fxLayoutAlign="space-between center">
+        <strong>{{project.projectName}}</strong>
+        <button class="option-button" type="button" mat-icon-button (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"><i class="material-icons">more_vert</i></button>
+      </div>
       <mat-menu #menu="matMenu">
+        <!--
         <button mat-menu-item (click)="openEditDialog(project)">Editar</button>
         <button mat-menu-item (click)="openDeleteDialog(project)">Eliminar</button>
+        -->
       </mat-menu>
     </mat-card-header>
-    <img mat-card-image src="assets/images/person.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <button mat-button *ngIf="!project.budgets?.length" disabled><i>Ya has respondido con un presupuesto</i></button>
+      <button mat-button *ngIf="project.budgets?.length" [matBadge]="project.budgets?.length" matBadgeColor="accent"><i>Aún no has respondido</i></button>
+    </mat-card-content>
+    <img mat-card-image fxHide.lt-md src="assets/images/person.jpg" alt="Photo of a Shiba Inu">
     <mat-card-content fxLayoutAlign="space-between center">
-      <i>Activa</i> <i>{{project.registerDate}}</i>
+      <i>Activa</i> <i>{{project.registerDate | date}}</i>
     </mat-card-content>
   </mat-card>
 
   <div *ngIf="projects && !projects.length" fxLayoutAlign="center center">
-    No tienes búsquedas activas.<br>
-    Haz click en el botón de NUEVA BÚSQUEDA para comenzar.
+    Todavía no has aparecido en ninguna búsqueda.
   </div>
 </section>

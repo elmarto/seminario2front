@@ -61,3 +61,9 @@ export interface ProjectCreateResponse {
     projectName: string;
     projectDescription: string;
 }
+
+export interface BudgetCreateRequest {
+    projectID: number;
+    amount: string;
+    comments: string;
+}

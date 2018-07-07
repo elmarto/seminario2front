@@ -12,16 +12,16 @@ export interface Budget {
   amount: string;
   budgetStatusID: string;
   comments: string;
-  firstName: string;
-  lastName: string;
-  professionalID: string;
-  projectID: string;
-  requestDate: Date;
-  sexCode: string;
-  sexID: string;
-  sexName: string;
-  statusDescription: string;
-  statusName: string;
+  firstName?: string;
+  lastName?: string;
+  professionalID?: string;
+  projectID?: string;
+  requestDate?: Date;
+  sexCode?: string;
+  sexID?: string;
+  sexName?: string;
+  statusDescription?: string;
+  statusName?: string;
 }
 
 export interface BudgetStatus {
@@ -93,4 +93,3 @@ export interface Role {
   roleName: string;
   roleDescription: string;
 }
-

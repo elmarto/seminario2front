@@ -10,6 +10,7 @@ import { ProfessorsRoutingModule } from './professors-routing.module';
 import { ProfessorsHeaderComponent } from './views/professors-header/professors-header.component';
 import { ProfessorsHomeComponent } from './views/professors-home/professors-home.component';
 import { ProjectProfessorsListComponent } from './views/project-professors-list/project-professors-list.component';
+import { ProjectProfessorsDetailComponent } from './views/project-professors-detail/project-professors-detail.component';
 
 
 @NgModule({
@@ -24,12 +25,14 @@ import { ProjectProfessorsListComponent } from './views/project-professors-list/
   declarations: [
     ProfessorsHeaderComponent,
     ProfessorsHomeComponent,
-    ProjectProfessorsListComponent
+    ProjectProfessorsListComponent,
+    ProjectProfessorsDetailComponent
   ],
   entryComponents: [
     ProfessorsHeaderComponent,
     ProfessorsHomeComponent,
-    ProjectProfessorsListComponent
+    ProjectProfessorsListComponent,
+    ProjectProfessorsDetailComponent
   ]
 })
 export class ProfessorsModule {}
