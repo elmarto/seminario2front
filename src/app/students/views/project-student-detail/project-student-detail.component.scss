@@ -27,4 +27,16 @@
       }
     }
   }
+
+  .budget-detail {
+    h3 {
+      margin: 0;
+    }
+
+    .map {
+      height: 175px;
+      margin: 0 -2em;
+      width: calc(100% + 4em);
+    }
+  }
 }
