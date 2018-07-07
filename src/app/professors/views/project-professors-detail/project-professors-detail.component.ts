@@ -36,7 +36,7 @@ export class ProjectProfessorsDetailComponent implements OnInit {
   onSubmit() {
 
     const budgetCreateRequest: BudgetCreateRequest = {
-      projectID: this.project.projectID,
+      projectID: parseInt(this.project.projectID, 10),
       comments: this.form.get('comments').value,
       amount: this.form.get('amount').value
     };

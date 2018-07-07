@@ -12,21 +12,19 @@ import { ProjectProfessorsDetailComponent } from '../project-professors-detail/p
 })
 export class ProjectProfessorsListComponent implements OnInit {
 
+  project: Project[];
+
   projects: Project[] = [
     {
-      projectID: 1,
-      projectStatus: 1,
+      projectID: '1',
+      statusName: 'ACTIVO',
       projectName: 'Albanil',
       projectDescription: 'Necesito un albanil para arreglar mi cocina',
       registerDate: new Date(),
-      budgets: []
-    },
-    {
-      projectID: 2,
-      projectStatus: 1,
-      projectName: 'Plomero',
-      projectDescription: 'Necesito un plomero para arreglar mi cocina',
-      registerDate: new Date(),
+      clientID: '1',
+      professionID: '1',
+      professionName: 'ALBANIL',
+      projectStatusID: '1',
       budgets: []
     }
   ];
