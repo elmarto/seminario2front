@@ -21,6 +21,23 @@ $folded-menu-background: #1f1f1f;
     min-width: auto;
   }
 
+  .view-selector {
+    border: 1px solid white;
+
+    .mat-button-toggle {
+      color: white;
+      
+      &:first { 
+        border-right: 1px solid white; 
+      }
+      &.mat-button-toggle-checked {
+        background-color: white ;
+        color: #1e5799;
+      }
+    }
+
+  }
+
   .logout {
     border: 1px solid white;
   }
