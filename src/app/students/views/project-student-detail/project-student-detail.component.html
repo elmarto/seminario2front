@@ -13,10 +13,10 @@
   
           <ul class="budget-list">
             <ng-container *ngFor="let budget of budgets">
-              <li class="budget-item" *ngIf="budget.budgetStatusID == 1" (click)="onBudgetSelected(budget)" fxLayoutAlign="space-between center" fxFlex>
+              <li class="budget-item" [ngClass]="{'disabled': budget.budgetStatusID != 1}" (click)="onBudgetSelected(budget)" fxLayoutAlign="space-between center" fxFlex>
                 <div fxLayout="column">
                   <p class="budget-name">{{budget.firstName}} {{budget.lastName}}</p>
-                  <i class="budget-amount">{{budget.amount | currency}}</i>
+                  <i class="budget-amount">{{budget.amount | currency}}<span *ngIf="budget.budgetStatusID != 1"> | RECHAZADA</span></i>
                 </div>
                 <mat-icon>keyboard_arrow_right</mat-icon>
               </li>

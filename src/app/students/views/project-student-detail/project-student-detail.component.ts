@@ -44,8 +44,8 @@ export class ProjectStudentDetailComponent implements OnInit {
 
   ngOnInit() {
     this.budgetService.findByProjectId(this.project.projectID).subscribe(budgets => {
-      const budgetStatusPending = '1';
-      this.budgets = budgets.filter(b => b.budgetStatusID === budgetStatusPending);
+      // const budgetStatusPending = '1';
+      this.budgets = budgets;
     });
   }
 

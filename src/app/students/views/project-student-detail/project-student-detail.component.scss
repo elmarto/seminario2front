@@ -17,6 +17,10 @@
         border: none
       }
 
+      &.disabled {
+        color: #aaa;
+      }
+
       .budget-name {
         margin: 0;
       }
