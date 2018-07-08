@@ -1,13 +1,13 @@
 export interface Project {
-  clientID: string;
-  professionID: string;
-  professionName: string;
-  projectDescription: string;
-  projectID: string;
   projectName: string;
+  projectDescription: string;
   projectStatusID: string;
   registerDate: Date;
-  statusName: string;
+  projectID?: string;
+  clientID?: string;
+  professionID?: string;
+  professionName?: string;
+  statusName?: string;
   budgets?: Budget[];
 }
 

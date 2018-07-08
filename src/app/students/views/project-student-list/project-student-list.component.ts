@@ -56,7 +56,7 @@ export class ProjectStudentListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((project: Project) => {
       if (project) {
-        project.projectID = this.projects.length;
+        project.projectID = '' + this.projects.length;
         this.projects.push(project);
         console.log(project);
       }

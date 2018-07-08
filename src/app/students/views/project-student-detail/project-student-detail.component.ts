@@ -56,4 +56,8 @@ export class ProjectStudentDetailComponent implements OnInit {
   onBudgetSelected(budget: Budget) {
     this.selectedBudget = budget;
   }
+
+  parseFloat(numberString: string) {
+    return parseFloat(numberString);
+  }
 }

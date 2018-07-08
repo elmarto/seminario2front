@@ -1,10 +1,10 @@
 <div *ngIf="!selectedBudget">
   <h2 mat-dialog-title>Clases de {{project.projectName}}</h2>
   
-  <section style="height: 400px;" class="project-container" fxLayout="column" fxLayoutAlign="start start" style="width: 100%;">
-    <div fxLayout="row" fxLayoutAlign="center top" fxLayoutGap="1em">
+  <section style="height: 400px; width: 100%;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
+    <div fxLayout="row" fxLayoutAlign="center top" fxLayoutGap="1em" style="width: 100%;">
       
-      <div *ngIf="!selectedBudget" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="1em">
+      <div *ngIf="!selectedBudget" fxFlex="100" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="1em">
         <div fxLayout="column">
           <span>{{project.projectDescription}}</span>
         </div>
@@ -30,7 +30,7 @@
 <div *ngIf="selectedBudget" class="budget-detail">
   <h2 mat-dialog-title>Propuesta de Clase</h2>
 
-  <section style="height: 400px;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
+  <section style="height: 400px; width: 100%;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
     <div fxLayout="column" fxLayoutAlign="center top" fxLayoutGap="1em" style="width: 100%;">
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <div>
@@ -47,9 +47,27 @@
         {{selectedBudget.comments}}
       </span>
 
-      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.904881651861!2d-58.38449648507464!3d-34.60656668045878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacfee6f4b27%3A0x655bb8bc34860a6c!2sCerrito+154%2C+C1010+CABA!5e0!3m2!1sen!2sar!4v1530985238473" 
+      <agm-map 
+        [latitude]="parseFloat(selectedBudget.lat)"
+        [longitude]="parseFloat(selectedBudget.lng)"
+        [zoom]="14"
+        [disableDefaultUI]="true"
+        [zoomControl]="false"
+        class="map"
+        style="height: 200px">
+        
+        <agm-circle [latitude]="parseFloat(selectedBudget.lat + 0.03)" [longitude]="parseFloat(selectedBudget.lng)" 
+            [radius]="400"
+            [fillColor]="'#e91e63'"
+            [circleDraggable]="false"
+            [editable]="false">
+        </agm-circle>
+
+      </agm-map>
+
+      <!-- <iframe class="map" src="http://maps.google.com/?q=-34.6065667,-58.3844965" 
         width="100%" height="250"
-        frameborder="0" style="border:0" allowfullscreen></iframe>
+        frameborder="0" style="border:0" allowfullscreen></iframe> -->
     </div>
   </section>
 </div>

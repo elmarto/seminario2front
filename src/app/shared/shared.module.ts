@@ -14,6 +14,7 @@ import { ProjectService, AuthService, AuthInterceptor } from './services';
 import { TokenService } from './services/token.service';
 import { ProfessionService } from './services/profession.service';
 import { BudgetService } from 'app/shared/services/budget.service';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -25,7 +26,10 @@ import { BudgetService } from 'app/shared/services/budget.service';
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
-    NguCarouselModule
+    NguCarouselModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDfw8BldKkKUPiQypR4lKdRGSrMkpcnTMU'
+    })
   ],
   declarations: [
     FooterComponent
@@ -48,6 +52,7 @@ import { BudgetService } from 'app/shared/services/budget.service';
     FlexLayoutModule,
     HttpClientModule,
     NguCarouselModule,
+    AgmCoreModule,
     FooterComponent
   ],
   entryComponents: []

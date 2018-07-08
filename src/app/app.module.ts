@@ -7,6 +7,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 import { StudentsModule } from './students';
 import { SharedModule } from './shared';

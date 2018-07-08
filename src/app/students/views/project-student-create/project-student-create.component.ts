@@ -48,8 +48,7 @@ export class ProjectStudentCreateComponent implements OnInit {
     this.projectService.create(request).subscribe(response => {
       this.snackBar.open('Solicitud creada exitosamente', null, { duration: 2000 });
       const project: Project = {
-        projectID: 0,
-        projectStatus: 0,
+        projectStatusID: '0',
         projectName: request.projectName,
         projectDescription: request.projectDescription,
         registerDate: new Date()

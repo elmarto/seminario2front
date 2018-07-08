@@ -6,12 +6,14 @@ import { StudentsHeaderComponent } from './views/students-header/students-header
 import { StudentsHomeComponent } from './views/students-home/students-home.component';
 import { ProjectStudentListComponent } from './views/project-student-list/project-student-list.component';
 import { ProjectStudentCreateComponent } from './views/project-student-create/project-student-create.component';
+import { ReviewStudentListComponent } from './views/review-student-list/review-student-list.component';
 
 const componentRoutes: Routes = [
   { path: '', redirectTo: '/students/home', pathMatch: 'full' },
   { path: 'students', children: [
       { path: 'home', component: StudentsHomeComponent },
       { path: 'list-projects', component: ProjectStudentListComponent },
+      { path: 'reviews', component: ReviewStudentListComponent },
       { path: 'create-project', component: ProjectStudentCreateComponent },
       { path: '', component: StudentsHeaderComponent, outlet: 'students-header' }
     ]
