@@ -1,7 +1,7 @@
 <div *ngIf="!selectedBudget">
   <h2 mat-dialog-title>Clases de {{project.projectName}}</h2>
   
-  <section style="height: 400px; width: 100%;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
+  <section style="min-height: 400px; width: 100%;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
     <div fxLayout="row" fxLayoutAlign="center top" fxLayoutGap="1em" style="width: 100%;">
       
       <div *ngIf="!selectedBudget" fxFlex="100" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="1em">
@@ -28,9 +28,12 @@
 </div>
 
 <div *ngIf="selectedBudget" class="budget-detail">
-  <h2 mat-dialog-title>Propuesta de Clase</h2>
+  <h2 mat-dialog-title fxLayout fxLayoutAlign="start center" fxLayoutGap="1em">
+    <button mat-icon-button (click)="selectedBudget = null"><i class="material-icons">keyboard_arrow_left</i></button> 
+    <span>Propuesta de Clase</span>
+  </h2>
 
-  <section style="height: 400px; width: 100%;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
+  <section style="min-height: 400px; width: 100%;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
     <div fxLayout="column" fxLayoutAlign="center top" fxLayoutGap="1em" style="width: 100%;">
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <div>
@@ -74,7 +77,7 @@
 
 <mat-dialog-actions fxLayoutAlign="end center" fxLayoutGap="1em">
   <button mat-button *ngIf="!selectedBudget" color="accent" type="button" (click)="close()">CERRAR</button>
-  <button mat-button *ngIf="selectedBudget" color="accent" type="button" (click)="selectedBudget = null">VOLVER</button>
+  <button mat-button *ngIf="selectedBudget" color="accent" type="button" (click)="selectedBudget = null">RECHAZAR</button>
   <button mat-raised-button *ngIf="selectedBudget" color="accent" type="button">TOMAR CLASE</button>
   <!-- <button mat-raised-button type="submit" [disabled]="!form.valid" color="accent">CREAR</button> -->
 </mat-dialog-actions>

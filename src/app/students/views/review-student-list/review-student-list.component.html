@@ -7,14 +7,17 @@
     <mat-expansion-panel *ngFor="let review of [1,2,3]">
       <mat-expansion-panel-header>
         <mat-panel-title>Matematicas</mat-panel-title>
-        <mat-panel-description>con Professor Oak</mat-panel-description>
+        <mat-panel-description>Jul 3, 2018</mat-panel-description>
       </mat-expansion-panel-header>
       
-      <input matInput placeholder="Comentarios" />
-  
-      <div fxLayoutAlign="end center">
-        <button mat-raised-button color="accent">¡NO ME GUSTO!</button>
-        <button mat-raised-button color="accent">¡ME GUSTO!</button>
+      <p style="text-align: center;">¿Cómo calificarías la clase con <i>Samuel Oak</i>?</p>
+      
+      <div fxLayoutAlign="center center">
+        <mat-button-toggle-group aria-label="Calificacion">
+          <mat-button-toggle><i class="material-icons">sentiment_very_dissatisfied</i></mat-button-toggle>
+          <mat-button-toggle><i class="material-icons">sentiment_satisfied</i></mat-button-toggle>
+          <mat-button-toggle><i class="material-icons">sentiment_very_satisfied</i></mat-button-toggle>
+        </mat-button-toggle-group>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
