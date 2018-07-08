@@ -15,27 +15,9 @@
         <i class="material-icons">grade</i>
       <span>Ver búsquedas</span>
     </button>
-    <button mat-button type="button" class="header-sector" (click)="createProject()">
-        <i class="material-icons">search</i>
-      <span>Nueva búsqueda</span>
-    </button>    
     <button mat-button type="button" class="header-sector" (click)="logout()">
       <i class="material-icons">person_outline</i>
       <span>Cerrar sesión</span>
     </button>
   </div>
 </header>
-<!-- 
-<div class="sports folded-menu" fxLayout fxLayout.xs="column" [ngClass]="{'unfolded': unfold.sports}">
-  <a class="menu-item" *ngFor="let sportItem of SPORTS" (click)="onSportChange(sportItem); this.unfoldAll();" fxLayoutGap="5px">
-    <img class="app-icon small" [src]="sportItem.icon" />
-    <span class="title">{{sportItem.title}}</span>
-  </a>
-</div> -->
-
-<!-- <div class="user folded-menu" fxLayout="column" [ngClass]="{'unfolded': unfold.user}">
-  <a class="menu-item" *ngFor="let option of USER_OPTIONS" [routerLink]="option.url" (click)="this.unfoldAll(); callOtherMethod(option.methodToCallOnClick);" fxLayoutGap="5px">
-    <img class="app-icon small" [src]="option.icon" />
-    <span class="title">{{option.key}}</span>
-  </a>
-</div> -->
