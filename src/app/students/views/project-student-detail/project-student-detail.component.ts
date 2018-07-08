@@ -4,6 +4,7 @@ import { MatSnackBar, MatDialogRef, MatSelectChange } from '@angular/material';
 import { Project, Budget } from '../../../shared/interfaces/models';
 import { BudgetService } from 'app/shared/services/budget.service';
 import { trigger, state, style, transition, animate, query } from '@angular/animations';
+import { BudgetUpdateRequest } from 'app/shared/interfaces/prospects';
 
 @Component({
   selector: 'app-project-student-detail',
@@ -42,7 +43,10 @@ export class ProjectStudentDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.budgetService.findByProjectId(this.project.projectID).subscribe(budgets => this.budgets = budgets);
+    this.budgetService.findByProjectId(this.project.projectID).subscribe(budgets => {
+      const budgetStatusPending = '1';
+      this.budgets = budgets.filter(b => b.budgetStatusID === budgetStatusPending);
+    });
   }
 
   onSubmit() {
@@ -59,5 +63,24 @@ export class ProjectStudentDetailComponent implements OnInit {
 
   parseFloat(numberString: string) {
     return parseFloat(numberString);
+  }
+
+  answerBudget(budget: Budget, budgetStatusID) {
+    const request: BudgetUpdateRequest = {
+      budgetID: budget.budgetID,
+      budgetStatusID: budgetStatusID + ''
+    };
+    this.budgetService.update(request).subscribe(response => {
+      budget.budgetStatusID = budgetStatusID + '';
+      let msg = '';
+      if ((budget.budgetStatusID === '2')) {
+        msg = 'La Propuesta Aceptada';
+        this.project.projectStatusID = '2';
+      } else {
+        msg = 'La Propuesta Rechazada';
+      }
+      this.snackBar.open(msg, null, { duration: 5000 });
+      this.dialogRef.close();
+    });
   }
 }

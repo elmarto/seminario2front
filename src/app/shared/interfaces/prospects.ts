@@ -67,3 +67,8 @@ export interface BudgetCreateRequest {
     amount: string;
     comments: string;
 }
+
+export interface BudgetUpdateRequest {
+    budgetID: number;
+    budgetStatusID: string;
+}

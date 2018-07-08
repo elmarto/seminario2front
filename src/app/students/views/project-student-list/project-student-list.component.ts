@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProjectService } from 'app/shared';
 import { MatDialog } from '@angular/material';
 import { ProjectStudentCreateComponent } from '../project-student-create/project-student-create.component';
@@ -12,9 +12,16 @@ import { BudgetService } from '../../../shared/services/budget.service';
   templateUrl: './project-student-list.component.html',
   styleUrls: ['./project-student-list.component.scss']
 })
-export class ProjectStudentListComponent implements OnInit {
+export class ProjectStudentListComponent implements OnInit, OnDestroy {
 
   projects: Project[];
+  projectStatus = {
+    1: 'Activa',
+    2: 'Tomada',
+    3: 'Cancelada',
+    4: 'Finalizada'
+  };
+  budgetInterval;
 
   constructor(
     private projectService: ProjectService,
@@ -25,8 +32,12 @@ export class ProjectStudentListComponent implements OnInit {
   ngOnInit() {
     this.projectService.all().subscribe(response => {
       this.projects = response.values;
-      setInterval(this.checkForBudgets.bind(this), 1000);
+      this.budgetInterval = setInterval(this.checkForBudgets.bind(this), 1000);
     });
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.budgetInterval);
   }
 
   checkForBudgets() {

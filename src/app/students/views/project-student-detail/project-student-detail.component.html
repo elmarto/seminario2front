@@ -8,19 +8,43 @@
         <div fxLayout="column">
           <span>{{project.projectDescription}}</span>
         </div>
-        <div fxLayout="column" style="width: 100%">
+        <div *ngIf="project.projectStatusID == 1" fxLayout="column" style="width: 100%">
           <h3>Propuestas</h3>
   
           <ul class="budget-list">
-            <li class="budget-item" *ngFor="let budget of budgets" (click)="onBudgetSelected(budget)" fxLayoutAlign="space-between center" fxFlex>
-              <div fxLayout="column">
-                <p class="budget-name">{{budget.firstName}} {{budget.lastName}}</p>
-                <i class="budget-amount">{{budget.amount | currency}}</i>
-              </div>
-              <mat-icon>keyboard_arrow_right</mat-icon>
-            </li>
+            <ng-container *ngFor="let budget of budgets">
+              <li class="budget-item" *ngIf="budget.budgetStatusID == 1" (click)="onBudgetSelected(budget)" fxLayoutAlign="space-between center" fxFlex>
+                <div fxLayout="column">
+                  <p class="budget-name">{{budget.firstName}} {{budget.lastName}}</p>
+                  <i class="budget-amount">{{budget.amount | currency}}</i>
+                </div>
+                <mat-icon>keyboard_arrow_right</mat-icon>
+              </li>
+            </ng-container>
           </ul>
         </div>  
+
+        <ng-container *ngIf="project.projectStatusID != 1">
+          <div *ngFor="let budget of budgets" fxShow="budget.budgetStatusID == 2" fxLayout="column" fxLayoutAlign="center top" fxLayoutGap="1em" style="width: 100%;">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div>
+                <small *ngIf="budget.sexCode === 'M'">Profesor</small>
+                <small *ngIf="budget.sexCode !== 'M'">Profesora</small>
+                <h3>{{budget.firstName}} {{budget.lastName}}</h3>
+              </div>
+              <div>
+                <span>{{budget.amount | currency}}</span> <br> 
+                <small>por hora</small>
+              </div>
+            </div>
+            <span>
+              {{budget.comments}}
+            </span>
+            <p>
+              Dirección: {{budget.streetAddress}}
+            </p>
+          </div>
+        </ng-container>
       </div>
   
     </div>
@@ -67,17 +91,13 @@
         </agm-circle>
 
       </agm-map>
-
-      <!-- <iframe class="map" src="http://maps.google.com/?q=-34.6065667,-58.3844965" 
-        width="100%" height="250"
-        frameborder="0" style="border:0" allowfullscreen></iframe> -->
     </div>
   </section>
 </div>
 
 <mat-dialog-actions fxLayoutAlign="end center" fxLayoutGap="1em">
   <button mat-button *ngIf="!selectedBudget" color="accent" type="button" (click)="close()">CERRAR</button>
-  <button mat-button *ngIf="selectedBudget" color="accent" type="button" (click)="selectedBudget = null">RECHAZAR</button>
-  <button mat-raised-button *ngIf="selectedBudget" color="accent" type="button">TOMAR CLASE</button>
+  <button mat-button *ngIf="selectedBudget" color="accent" type="button" (click)="answerBudget(selectedBudget, 3)">RECHAZAR</button>
+  <button mat-raised-button *ngIf="selectedBudget" color="accent" type="button" (click)="answerBudget(selectedBudget, 2)">TOMAR CLASE</button>
   <!-- <button mat-raised-button type="submit" [disabled]="!form.valid" color="accent">CREAR</button> -->
 </mat-dialog-actions>
