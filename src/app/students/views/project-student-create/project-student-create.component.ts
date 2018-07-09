@@ -46,14 +46,19 @@ export class ProjectStudentCreateComponent implements OnInit {
       professionID: ctrl.professionID.value
     };
     this.projectService.create(request).subscribe(response => {
-      this.snackBar.open('Solicitud creada exitosamente', null, { duration: 2000 });
-      const project: Project = {
-        projectStatusID: '1',
-        projectName: request.projectName,
-        projectDescription: request.projectDescription,
-        registerDate: new Date()
-      };
-      this.dialogRef.close(project);
+      if (response.status.code === 200) {
+        this.snackBar.open('Solicitud creada exitosamente', null, { duration: 2000 });
+        const project: Project = {
+          projectID: response.status.values.projectID,
+          projectStatusID: '1',
+          projectName: request.projectName,
+          projectDescription: request.projectDescription,
+          registerDate: new Date()
+        };
+        this.dialogRef.close(project);
+      } else {
+        this.snackBar.open('Error ' + response.status.code + ': ' + response.status.description , null, { duration: 5000 });
+      }
     });
   }
 
