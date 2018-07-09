@@ -73,7 +73,10 @@ export interface BudgetUpdateRequest {
     budgetStatusID: string;
 }
 
-export interface CreateProfessionalProfessionRequest {
-    professionalID: number;
+export interface ProfessionalProfessionCreateRequest {
+    professionID: number;
+}
+
+export interface ProfessionalProfessionDeleteRequest {
     professionID: number;
 }
