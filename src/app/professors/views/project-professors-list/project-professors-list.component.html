@@ -1,5 +1,5 @@
 <div class="title-container" fxLayoutAlign="space-between center">
-  <h1>Solicitudes en las que apareciste</h1>
+  <h1>Solicitudes en las has aparecido</h1>
 </div>
 
 <section class="project-container" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutAlign.lt-md="center">
@@ -16,7 +16,7 @@
     <mat-card-content>
       <p>"...{{project.projectDescription}}..."</p>
       <button mat-button *ngIf="project.budgets?.length > 0" disabled><i>Ya has enviado un presupuesto</i></button>
-      <button mat-button *ngIf="project.budgets?.length == 0"><i>Aún no has enviado presupuesto!</i></button>
+      <button mat-button *ngIf="project.budgets?.length == 0"><i>¡Aún no has enviado presupuesto!</i></button>
     </mat-card-content>
     <img mat-card-image fxHide.lt-md src="assets/images/person.jpg" alt="Photo of a Shiba Inu">
     <mat-card-content fxLayoutAlign="space-between center">
