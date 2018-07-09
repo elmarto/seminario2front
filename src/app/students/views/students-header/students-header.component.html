@@ -11,7 +11,7 @@
   <div fxFlex fxLayoutAlign="center center">
     <mat-button-toggle-group class="view-selector" name="nav" aria-label="Seleccion de Vista">
       <mat-button-toggle [routerLink]="['/students/list-projects']" routerLinkActive #projects="routerLinkActive" [checked]="projects.isActive"><i class="material-icons">school</i></mat-button-toggle>
-      <mat-button-toggle [routerLink]="['/students/reviews']" routerLinkActive #reviews="routerLinkActive" [checked]="reviews.isActive"><i class="material-icons">check_box</i></mat-button-toggle>
+      <mat-button-toggle [routerLink]="['/students/scores']" routerLinkActive #scores="routerLinkActive" [checked]="scores.isActive"><i class="material-icons">check_box</i></mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 

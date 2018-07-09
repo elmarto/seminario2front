@@ -4,8 +4,8 @@ import { MatDialog } from '@angular/material';
 import { ProjectStudentCreateComponent } from '../project-student-create/project-student-create.component';
 import { ProjectStudentDetailComponent } from '../project-student-detail/project-student-detail.component';
 import { ProjectStudentEditComponent } from '../project-student-create/project-student-edit.component';
-import { Project } from '../../../shared/interfaces/models';
-import { BudgetService } from '../../../shared/services/budget.service';
+import { Project } from 'app/shared/interfaces/models';
+import { BudgetService } from 'app/shared/services/budget.service';
 
 @Component({
   selector: 'app-project-student-list',
@@ -14,7 +14,7 @@ import { BudgetService } from '../../../shared/services/budget.service';
 })
 export class ProjectStudentListComponent implements OnInit, OnDestroy {
 
-  projects: Project[];
+  projects: Project[] = [];
   projectStatus = {
     1: 'Activa',
     2: 'Tomada',
@@ -31,7 +31,9 @@ export class ProjectStudentListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.projectService.all().subscribe(response => {
-      this.projects = response.values;
+      if (response.values) {
+        this.projects = response.values;
+      }
       this.budgetInterval = setInterval(this.checkForBudgets.bind(this), 1000);
     });
   }
@@ -67,6 +69,7 @@ export class ProjectStudentListComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((project: Project) => {
       if (project) {
+        // TODO: replace next line with assigned ID from response
         project.projectID = '' + this.projects.length;
         this.projects.push(project);
         console.log(project);
