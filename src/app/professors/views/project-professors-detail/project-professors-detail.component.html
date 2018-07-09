@@ -36,6 +36,12 @@
                 </p>
             </div>
             <p style="text-align: right; font-style: italic;">Tú</p>
+            <p *ngIf="project?.budgets?.length > 0 && project?.budgets[0].budgetStatusID == 2">
+              <i>¡El presupuesto fue aceptado!</i>
+            </p>
+            <p *ngIf="project?.budgets?.length > 0 && project?.budgets[0].budgetStatusID == 3">
+              <i>El presupuesto fue rechazado</i>
+            </p>                  
           </ng-container>
       </mat-tab>
       <mat-tab label="Ubicación">
