@@ -2,21 +2,23 @@
     <h1>Configuración de perfil</h1>
 </div>
 
-<mat-accordion class="example-headers-align">
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>Asignaturas</mat-panel-title>
-            <mat-panel-description>
-                Indica que quieres enseñar así pueden encontrarte
-                <mat-icon>account_circle</mat-icon>
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Selecciona las asignaturas que quieras agregar:</p>
-        <mat-chip-list [multiple]="true" style="margin-top: 15px">
-            <mat-chip color="accent" *ngFor="let profession of professions" [selected]="profession.selected" (click)="profession.selected=!profession.selected">{{profession.professionName}}</mat-chip>
-        </mat-chip-list>
-        <mat-action-row>
-            <button mat-button color="accent" (click)="saveChanges()">Guardar cambios</button>
-        </mat-action-row>
-    </mat-expansion-panel>
-</mat-accordion>
+<div class="configuration-container" fxLayout="row" fxLayoutGap="1em">
+    <mat-accordion class="example-headers-align">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>Asignaturas</mat-panel-title>
+                <mat-panel-description>
+                    Indica que quieres enseñar así pueden encontrarte
+                    <mat-icon>account_circle</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Selecciona las asignaturas que quieras agregar:</p>
+            <mat-chip-list [multiple]="true" style="margin-top: 15px">
+                <mat-chip color="accent" *ngFor="let profession of professions" [selected]="profession.selected" (click)="profession.selected=!profession.selected">{{profession.professionName}}</mat-chip>
+            </mat-chip-list>
+            <mat-action-row>
+                <button mat-button color="accent" (click)="saveChanges()">Guardar cambios</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
