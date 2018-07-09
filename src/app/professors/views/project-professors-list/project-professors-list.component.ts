@@ -13,7 +13,6 @@ import { Subscription, timer } from 'rxjs';
 })
 export class ProjectProfessorsListComponent implements OnInit, OnDestroy {
 
-  project: Project[];
   projects: Project[];
   subscription: Subscription;
 
