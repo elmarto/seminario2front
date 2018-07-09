@@ -15,14 +15,16 @@ export class ProfessionalService {
   constructor(private httpClient: HttpClient) { }
 
   findProfessionsByProfessional(): Observable<Profession[]> {
-    return this.httpClient.get<Profession[]>(environment.apiUrl + '/professionals.php/getProfessionsByUserID');
+    return this.httpClient.get<Profession[]>(environment.apiUrl + '/professionals.php/getProfessionalProfessionsByUserID');
   }
 
   addProfession(professionalProfessionCreateRequest: ProfessionalProfessionCreateRequest): Observable<boolean> {
-    return this.httpClient.post<boolean>(environment.apiUrl + '/professionals.php/insertProfession', professionalProfessionCreateRequest);
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.post<boolean>(environment.apiUrl + '/professionals.php/insertProfessionalProfession', professionalProfessionCreateRequest);
   }
 
   removeProfession(professionalProfessionDeleteRequest: ProfessionalProfessionDeleteRequest): Observable<boolean> {
-    return this.httpClient.post<boolean>(environment.apiUrl + '/professionals.php/deleteProfession', professionalProfessionDeleteRequest);
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.post<boolean>(environment.apiUrl + '/professionals.php/deleteProfessionalProfession', professionalProfessionDeleteRequest);
   }
 }
