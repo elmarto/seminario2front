@@ -28,8 +28,12 @@
     </mat-card-content>
   </mat-card>
 
-  <div *ngIf="projects && !projects.length" fxLayoutAlign="center center">
-    No tienes búsquedas activas.<br>
-    Haz click en el botón de NUEVA BÚSQUEDA para comenzar.
+  <div *ngIf="projects && !projects.length" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1em" style="text-align: center; padding-top: 3em; font-size: 1.1em;">
+    <span>¡Aún no estas buscando clases!</span>
+    <span fxLayout fxLayoutAlign="center center" fxLayoutGap="3px">
+      <span>Utiliza el botón </span>
+      <i class="material-icons">add_circle</i>
+      <span> para comenzar.</span>
+    </span>
   </div>
 </section>

@@ -13,8 +13,9 @@ import { FooterComponent } from './components';
 import { ProjectService, AuthService, AuthInterceptor } from './services';
 import { TokenService } from './services/token.service';
 import { ProfessionService } from './services/profession.service';
-import { BudgetService } from 'app/shared/services/budget.service';
+import { BudgetService } from './services/budget.service';
 import { AgmCoreModule } from '@agm/core';
+import { ScoreService } from './services/score.service';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { AgmCoreModule } from '@agm/core';
     ProjectService,
     ProfessionService,
     BudgetService,
+    ScoreService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   exports: [

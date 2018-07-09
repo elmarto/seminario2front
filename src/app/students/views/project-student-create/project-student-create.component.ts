@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
-import { ProjectService } from '../../../shared/services';
-import { Profession, Project } from '../../../shared/interfaces/models';
-import { ProjectCreateRequest } from '../../../shared/interfaces/prospects';
+import { ProjectService } from 'app/shared/services';
+import { Profession, Project } from 'app/shared/interfaces/models';
+import { ProjectCreateRequest } from 'app/shared/interfaces/prospects';
 import { ProfessionService } from 'app/shared/services/profession.service';
 
 @Component({
@@ -48,7 +48,7 @@ export class ProjectStudentCreateComponent implements OnInit {
     this.projectService.create(request).subscribe(response => {
       this.snackBar.open('Solicitud creada exitosamente', null, { duration: 2000 });
       const project: Project = {
-        projectStatusID: '0',
+        projectStatusID: '1',
         projectName: request.projectName,
         projectDescription: request.projectDescription,
         registerDate: new Date()
