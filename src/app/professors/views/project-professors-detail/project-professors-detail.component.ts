@@ -26,11 +26,19 @@ export class ProjectProfessorsDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.budgetService.findByProjectId(this.project.projectID).subscribe(budgets => this.project.budgets = budgets);
+    this.budgetService.findByProjectId(this.project.projectID).subscribe(response => this.project.budgets = response);
     this.form = this.formBuilder.group({
       comments: [null, Validators.compose([Validators.required, Validators.maxLength(50)])],
       amount: [null, Validators.compose([Validators.required])]
     });
+  }
+
+  getProjectLat(): number {
+    return parseFloat(this.project.lat);
+  }
+
+  getProjectLng(): number {
+    return parseFloat(this.project.lng);
   }
 
   onSubmit() {
@@ -41,15 +49,7 @@ export class ProjectProfessorsDetailComponent implements OnInit {
       amount: this.form.get('amount').value
     };
 
-    this.budgetService.create(budgetCreateRequest).subscribe(response => {
-      this.project.budgets.push({
-        budgetID: 0,
-        projectID: this.project.projectID.toString(),
-        budgetStatusID: '0',
-        comments: budgetCreateRequest.comments,
-        amount: budgetCreateRequest.amount
-      });
-    });
+    this.budgetService.create(budgetCreateRequest).subscribe(response => console.log(response));
   }
 
   close() {

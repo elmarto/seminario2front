@@ -72,3 +72,8 @@ export interface BudgetUpdateRequest {
     budgetID: number;
     budgetStatusID: string;
 }
+
+export interface CreateProfessionalProfessionRequest {
+    professionalID: number;
+    professionID: number;
+}

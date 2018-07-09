@@ -1,23 +1,26 @@
-<h2 mat-dialog-title>Clases de {{project.projectName}}</h2>
+<h2 mat-dialog-title>{{project.projectName}}</h2>
 <mat-dialog-content>
   <section style="height: 400px;" class="project-container" fxLayout="column">
     <div fxLayout="row" fxLayoutAlign="center top" fxLayoutGap="1em"> 
       <div fxLayout="column" fxFlex="100" fxLayoutGap="1em">
-        <div>{{project.projectDescription}}</div>
-        <mat-divider></mat-divider>
-        <strong>Contacto</strong>
-        <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&location=46.414382,10.013988
-        " allowfullscreen></iframe>        
-        <mat-list>
-          <mat-list-item>{{project.firstName}} {{project.lastName}}</mat-list-item>
-          <mat-list-item>{{project.cityID}} - {{project.stateProvinceID}}</mat-list-item>
-        </mat-list>      
+        <p>"...{{project.projectDescription}}..."</p>
+        <p style="text-align: right">{{project.firstName}} {{project.lastName}}</p>
+        <mat-divider></mat-divider>   
+        <strong>Ubicación</strong>
+        <p>{{project.cityName}} - {{project.stateProvinceName}}</p>
+        <agm-map  
+        [latitude]="getProjectLat()"
+        [longitude]="getProjectLng()"
+        [zoom]="14"
+        [disableDefaultUI]="true"
+        [zoomControl]="false"
+        class="map" style="height: 200px"></agm-map>   
         <mat-divider></mat-divider>   
         <strong>Presupuesto</strong>
-        <ng-container *ngIf="project.budgets.length == 0">
+        <ng-container *ngIf="project?.budgets?.length == 0">
           <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
             <mat-form-field class="field" fxFlex="100" style="width: 100%;">
-              <textarea matInput style="height: 100px" formControlName="comments" placeholder="Escribe el mensaje que quieres enviarle"></textarea>
+              <textarea matInput style="height: 100px" formControlName="comments" placeholder="Escribe el mensaje que quieras enviarle"></textarea>
               <mat-error *ngIf="form.get('comments').hasError('required')">Este campo es requerido</mat-error>
               <mat-error *ngIf="form.get('comments').hasError('maxlength')">Debe tener menos de 140 caracteres.</mat-error>
             </mat-form-field>
@@ -30,7 +33,7 @@
             </div>        
           </form>
         </ng-container>
-        <ng-container *ngIf="project.budgets.length > 0">
+        <ng-container *ngIf="project?.budgets?.length > 0">
           <p>Le has enviado el siguiente presupuesto</p>
           <mat-list>
             <mat-list-item>{{project.budgets[0].comments}}</mat-list-item>

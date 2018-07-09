@@ -1,33 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Project } from '../../../shared/interfaces/models';
 import { ProjectService } from '../../../shared';
 import { BudgetService } from '../../../shared/services/budget.service';
 import { MatDialog } from '@angular/material';
 import { ProjectProfessorsDetailComponent } from '../project-professors-detail/project-professors-detail.component';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-project-professors-list',
   templateUrl: './project-professors-list.component.html',
   styleUrls: ['./project-professors-list.component.scss']
 })
-export class ProjectProfessorsListComponent implements OnInit {
+export class ProjectProfessorsListComponent implements OnInit, OnDestroy {
 
   project: Project[];
-
-  projects: Project[] = [
-    {
-      projectID: '1',
-      statusName: 'ACTIVO',
-      projectName: 'Albanil',
-      projectDescription: 'Necesito un albanil para arreglar mi cocina',
-      registerDate: new Date(),
-      clientID: '1',
-      professionID: '1',
-      professionName: 'ALBANIL',
-      projectStatusID: '1',
-      budgets: []
-    }
-  ];
+  projects: Project[];
+  subscription: Subscription;
 
   constructor(
     private projectService: ProjectService,
@@ -36,28 +24,30 @@ export class ProjectProfessorsListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    /*
-    this.projectService.all().subscribe(response => {
-      this.projects = response.values;
-      setInterval(this.checkForBudgets.bind(this), 1000);
+    this.projectService.findByProfessional().subscribe(response => {
+      this.projects = response;
+      if (this.projects && this.projects.length > 0) {
+        this.subscription = timer(0, 5000).subscribe(x => {
+          this.projects.forEach(project => {
+            this.budgetService.findByProjectId(project.projectID).subscribe(budgets => project.budgets = budgets);
+          });
+        });
+      }
     });
-    */
   }
 
-  checkForBudgets() {
-    if (this.projects && this.projects.length) {
-      this.projects.forEach(project => {
-        this.budgetService.findByProjectId(project.projectID).subscribe(budgets => {
-          if ((project.budgets && project.budgets.length !== budgets.length || !project.budgets) ) {
-            project.budgets = budgets;
-          }
-        });
-      });
-    }
+  dismiss(project: Project): void {
+    console.log(project);
   }
 
   openDetailDialog(project): void {
     const dialogRef = this.dialog.open(ProjectProfessorsDetailComponent, { width: '80%' });
     dialogRef.componentInstance.project = project;
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription !== undefined) {
+      this.subscription.unsubscribe();
+    }
   }
 }

@@ -4,10 +4,18 @@ import { Observable } from 'rxjs';
 import { environment as env} from 'environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ProjectListRequest, ProjectListResponse } from '../interfaces/prospects';
+import { map } from 'rxjs/operators';
+import { ResponseMetadata } from '../interfaces/response-metadata';
+import { Project } from '../interfaces/models';
 
 @Injectable()
 export class ProjectService  {
   constructor(private httpClient: HttpClient) { }
+
+  findByProfessional(): Observable<Project[]> {
+    return this.httpClient.get<ResponseMetadata>(`${env.apiUrl}/projects.php/getProjectsByProfessionalID`)
+            .pipe(map(response => response.status.code === 200 ? response.values : []));
+  }
 
   all(request?: ProjectListRequest): Observable<ProjectListResponse> {
     return this.httpClient.get<any>(`${env.apiUrl}/projects.php/getProjectsByUserID`);

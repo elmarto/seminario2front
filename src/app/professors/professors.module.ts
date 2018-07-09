@@ -11,7 +11,7 @@ import { ProfessorsHeaderComponent } from './views/professors-header/professors-
 import { ProfessorsHomeComponent } from './views/professors-home/professors-home.component';
 import { ProjectProfessorsListComponent } from './views/project-professors-list/project-professors-list.component';
 import { ProjectProfessorsDetailComponent } from './views/project-professors-detail/project-professors-detail.component';
-
+import { ProfessorsProfileComponent } from './views/professors-profile/professors-profile.component';
 
 @NgModule({
   imports: [
@@ -26,13 +26,15 @@ import { ProjectProfessorsDetailComponent } from './views/project-professors-det
     ProfessorsHeaderComponent,
     ProfessorsHomeComponent,
     ProjectProfessorsListComponent,
-    ProjectProfessorsDetailComponent
+    ProjectProfessorsDetailComponent,
+    ProfessorsProfileComponent
   ],
   entryComponents: [
     ProfessorsHeaderComponent,
     ProfessorsHomeComponent,
     ProjectProfessorsListComponent,
-    ProjectProfessorsDetailComponent
+    ProjectProfessorsDetailComponent,
+    ProfessorsProfileComponent
   ]
 })
 export class ProfessorsModule {}

@@ -8,6 +8,12 @@ export interface Project {
   professionID?: string;
   professionName?: string;
   statusName?: string;
+  firstName?: string;
+  lastName?: string;
+  cityName?: string;
+  stateProvinceName?: string;
+  lat?: string;
+  lng?: string;
   budgets?: Budget[];
 }
 

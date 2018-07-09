@@ -18,7 +18,7 @@ export class BudgetService {
 
   findByProjectId(projectId): Observable<Budget[]> {
     return this.httpClient.get<ResponseMetadata>(`${environment.apiUrl}/budgets.php/getBudgetsByProjectID/${projectId}`)
-      .pipe(map(response => response.values));
+      .pipe(map(response => response.status.code === 200 ? response.values : []));
   }
 
   update(request: BudgetUpdateRequest): Observable<boolean> {

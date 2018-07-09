@@ -4,7 +4,7 @@ import { environment } from 'environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { ResponseMetadata } from '../interfaces/response-metadata';
 // tslint:disable-next-line:max-line-length
-import { UserRegistrationRequest, UserInformationRequest, ClientLocationRequest, ProfessionalLocationRequest } from '../interfaces/prospects';
+import { UserRegistrationRequest, UserInformationRequest, ClientLocationRequest, ProfessionalLocationRequest, CreateProfessionalProfessionRequest } from '../interfaces/prospects';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +28,10 @@ export class RegistrationService {
   registerProfessionalLocation(professionalLocationRequest: ProfessionalLocationRequest): Observable<ResponseMetadata> {
     // tslint:disable-next-line:max-line-length
     return this.httpClient.post<ResponseMetadata>(environment.apiUrl + '/professionals.php/insertProfessionalLocation', professionalLocationRequest);
+  }
+
+  registerProfessionalProfession(professionalProfessionCreateRequest: CreateProfessionalProfessionRequest): Observable<ResponseMetadata> {
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.post<ResponseMetadata>(environment.apiUrl + '/professionals.php/insertProfessionalProfession', professionalProfessionCreateRequest);
   }
 }
