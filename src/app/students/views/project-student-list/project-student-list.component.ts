@@ -69,8 +69,6 @@ export class ProjectStudentListComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((project: Project) => {
       if (project) {
-        // TODO: replace next line with assigned ID from response
-        project.projectID = '' + this.projects.length;
         this.projects.push(project);
         console.log(project);
       }
