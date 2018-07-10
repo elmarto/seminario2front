@@ -74,10 +74,10 @@ export class ProjectStudentDetailComponent implements OnInit {
       budget.budgetStatusID = budgetStatusID + '';
       let msg = '';
       if ((budget.budgetStatusID === '2')) {
-        msg = 'La Propuesta Aceptada';
+        msg = '¡Has aceptado tomar la clase!';
         this.project.projectStatusID = '2';
       } else {
-        msg = 'La Propuesta Rechazada';
+        msg = 'La propuesta ha sido rechazada';
       }
       this.snackBar.open(msg, null, { duration: 5000 });
       this.dialogRef.close();

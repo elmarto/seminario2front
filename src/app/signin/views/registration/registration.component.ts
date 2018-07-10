@@ -39,19 +39,20 @@ export class RegistrationComponent implements OnInit {
 
   registered: boolean;
 
-  constructor(private rolesService: RolesService,
-              private sexTypesService: SexTypesService,
-              private stateProvincesService: StateProvincesService,
-              private citiesService: CitiesService,
-              private registrationService: RegistrationService,
-              private authService: AuthService,
-              private tokenService: TokenService,
-              private formBuilder: FormBuilder,
-              private router: Router) {
-
+  constructor(
+    private rolesService: RolesService,
+    private sexTypesService: SexTypesService,
+    private stateProvincesService: StateProvincesService,
+    private citiesService: CitiesService,
+    private registrationService: RegistrationService,
+    private authService: AuthService,
+    private tokenService: TokenService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {
     /* Una home para cada rol */
     this.rolesHome.set(3, '/students/list-projects');
-    this.rolesHome.set(4, '/professors/home');
+    this.rolesHome.set(4, '/professors/list-projects');
   }
 
   ngOnInit() {
