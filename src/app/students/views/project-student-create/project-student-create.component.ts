@@ -49,7 +49,7 @@ export class ProjectStudentCreateComponent implements OnInit {
       if (response.status.code === 200) {
         this.snackBar.open('Solicitud creada exitosamente', null, { duration: 2000 });
         const project: Project = {
-          projectID: response.status.values.projectID,
+          projectID: response.values.projectID,
           projectStatusID: '1',
           projectName: request.projectName,
           projectDescription: request.projectDescription,

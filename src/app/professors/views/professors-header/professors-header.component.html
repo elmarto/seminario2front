@@ -1,27 +1,30 @@
 <header fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
   <div class="header-menu" fxLayout fxLayoutAlign="start center">
-    
-    <button mat-button type="button" class="header-sector" (click)="toggleUnfold('sports')">
+    <button mat-button type="button" class="header-sector">
       <div fxLayoutAlign="center center" fxLayoutGap="5px">
-        <img src="/assets/images/logo.png" style="height: 55px;">
+        <img src="/assets/images/logo.png" style="height: 40px; filter: brightness(1400%) hue-rotate(100deg);">
       </div>
     </button>
   </div>
 
-  <div fxFlex></div>
+  <div fxFlex fxLayoutAlign="center center">
+    <mat-button-toggle-group class="view-selector" name="nav" aria-label="Seleccion de Vista">
+      <mat-button-toggle [routerLink]="['/professors/list-projects']" routerLinkActive #projects="routerLinkActive" [checked]="projects.isActive"><i class="material-icons">school</i></mat-button-toggle>
+      <mat-button-toggle [routerLink]="['/professors/scores']" routerLinkActive #scores="routerLinkActive" [checked]="scores.isActive"><i class="material-icons">check_box</i></mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
 
   <div class="header-menu actions" fxLayoutAlign="end center">
-    <button mat-button type="button" class="header-sector" (click)="listProjects()">
-        <i class="material-icons">grade</i>
-      <span>Ver búsquedas</span>
-    </button>
-    <button mat-button type="button" class="header-sector" (click)="profile()">
-      <i class="material-icons">build</i>
-      <span>Perfil</span>
-    </button>    
-    <button mat-button type="button" class="header-sector" (click)="logout()">
-      <i class="material-icons">person_outline</i>
-      <span>Cerrar sesión</span>
-    </button>
+    <div style="padding-right: 0.5em;">
+      <button mat-icon-button type="button" class="logout" [matMenuTriggerFor]="menu">
+        <div fxLayoutAlign="end center" fxLayoutGap="0.5em">
+          <i class="material-icons" style="font-size: 2.4em;">more_vert</i>
+        </div>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="profile()">Perfil</button>
+        <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
+      </mat-menu>
+    </div>
   </div>
 </header>

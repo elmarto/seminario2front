@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.rolesHome.set(1, '/students/list-projects');
     this.rolesHome.set(2, '/students/list-projects');
     this.rolesHome.set(3, '/students/list-projects');
-    this.rolesHome.set(4, '/professors/home');
+    this.rolesHome.set(4, '/professors/list-projects');
   }
 
   ngOnInit() { }

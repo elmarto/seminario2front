@@ -3,28 +3,39 @@
 $folded-menu-background: #1f1f1f;
 
 :host {
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: space-between;
   height: $header-height;
   width: 100%;
   top: 0;
-  background: $header-background-color;
   z-index: 99;
-  color: $primary-text-color;
-
-  .header-menu:not(:last-child) {
-    border-right: 1px solid #454545;
-  }
+  color: white;
 
   .header-sector {
     height: $header-height;
-    border-left: 1px solid #454545;
     padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: auto;
+  }
+
+  .view-selector {
+    border: 1px solid white;
+
+    .mat-button-toggle {
+      color: white;
+      
+      &:first { 
+        border-right: 1px solid white; 
+      }
+      &.mat-button-toggle-checked {
+        background-color: white ;
+        color: #1e5799;
+      }
+    }
+
   }
 
   .folded-menu {

@@ -80,3 +80,8 @@ export interface ProfessionalProfessionCreateRequest {
 export interface ProfessionalProfessionDeleteRequest {
     professionID: number;
 }
+
+export interface ScoreRequest {
+    scoreID: {1, 2, 3};
+    comments: string;
+}

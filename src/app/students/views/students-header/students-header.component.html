@@ -1,6 +1,5 @@
 <header fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
   <div class="header-menu" fxLayout fxLayoutAlign="start center">
-    
     <button mat-button type="button" class="header-sector">
       <div fxLayoutAlign="center center" fxLayoutGap="5px">
         <img src="/assets/images/logo.png" style="height: 40px; filter: brightness(1400%) hue-rotate(58deg);">
@@ -17,9 +16,15 @@
 
   <div class="header-menu actions" fxLayoutAlign="end center">
     <div style="padding-right: 0.5em;">
-      <button mat-button type="button" class="logout" (click)="logout()">
-        <span>Cerrar Sesión</span>
+      <button mat-icon-button type="button" class="logout" [matMenuTriggerFor]="menu">
+        <div fxLayoutAlign="end center" fxLayoutGap="0.5em">
+          <i class="material-icons" style="font-size: 2.4em;">more_vert</i>
+        </div>
       </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">Perfil</button>
+        <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
+      </mat-menu>
     </div>
   </div>
 </header>
