@@ -6,6 +6,7 @@ import { ProjectStudentDetailComponent } from '../project-student-detail/project
 import { ProjectStudentEditComponent } from '../project-student-create/project-student-edit.component';
 import { Project } from 'app/shared/interfaces/models';
 import { BudgetService } from 'app/shared/services/budget.service';
+import { ProjectStudentDeleteComponent } from '../project-student-delete/project-student-delete.component';
 
 @Component({
   selector: 'app-project-student-list',
@@ -34,7 +35,7 @@ export class ProjectStudentListComponent implements OnInit, OnDestroy {
       if (response.values) {
         this.projects = response.values;
       }
-      this.budgetInterval = setInterval(this.checkForBudgets.bind(this), 1000);
+      this.budgetInterval = setInterval(this.checkForBudgets.bind(this), 5000);
     });
   }
 
@@ -59,9 +60,10 @@ export class ProjectStudentListComponent implements OnInit, OnDestroy {
     dialogRef.componentInstance.project = project;
   }
 
-  openEditDialog(project): void {
-    const dialogRef = this.dialog.open(ProjectStudentEditComponent);
-    // dialogRef.componentInstance.project = project;
+  openDeleteDialog(project): void {
+    const dialogRef = this.dialog.open(ProjectStudentDeleteComponent);
+    dialogRef.componentInstance.projects = this.projects;
+    dialogRef.componentInstance.project = project;
   }
 
   openCreateDialog(): void {

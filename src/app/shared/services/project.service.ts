@@ -22,7 +22,7 @@ export class ProjectService  {
   }
 
   delete(request: number): Observable<ProjectListResponse> {
-    return this.httpClient.delete<any>(`${env.apiUrl}/projects.php/getProjectsByUserID/${request}` );
+    return this.httpClient.delete<any>(`${env.apiUrl}/projects.php/deleteproject/${request}`);
   }
 
   create(request): Observable<any> {

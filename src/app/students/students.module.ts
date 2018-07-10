@@ -13,7 +13,7 @@ import { ProjectProfessionalListComponent } from './views/project-professional-l
 import { StudentsHomeComponent } from './views/students-home/students-home.component';
 import { StudentsHeaderComponent } from './views/students-header/students-header.component';
 import { ProjectStudentDetailComponent } from './views/project-student-detail/project-student-detail.component';
-import { ProjectStudentEditComponent } from './views/project-student-create/project-student-edit.component';
+import { ProjectStudentDeleteComponent } from './views/project-student-delete/project-student-delete.component';
 import { ScoreStudentListComponent } from './views/score-student-list/score-student-list.component';
 
 @NgModule({
@@ -30,14 +30,14 @@ import { ScoreStudentListComponent } from './views/score-student-list/score-stud
     StudentsHomeComponent,
     ProjectStudentListComponent,
     ProjectStudentCreateComponent,
-    ProjectStudentEditComponent,
+    ProjectStudentDeleteComponent,
     ProjectStudentDetailComponent,
     ProjectProfessionalListComponent,
     ScoreStudentListComponent
   ],
   entryComponents: [
     ProjectStudentCreateComponent,
-    ProjectStudentEditComponent,
+    ProjectStudentDeleteComponent,
     ProjectStudentDetailComponent
   ]
 })

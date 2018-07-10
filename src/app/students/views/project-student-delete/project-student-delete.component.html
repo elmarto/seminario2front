@@ -1,0 +1,14 @@
+<div *ngIf="!selectedBudget">
+  <h2 mat-dialog-title>Clases de {{project.projectName}}</h2>
+  
+  <section style="min-height: 80px; width: 100%;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
+    <div fxLayout="row" fxLayoutAlign="center top" fxLayoutGap="1em" style="width: 100%;">
+      <h3>¿Está seguro que desea eliminar la búsqueda?</h3>
+    </div>
+  </section>
+</div>
+
+<mat-dialog-actions fxLayoutAlign="end center" fxLayoutGap="1em">
+  <button mat-button [mat-dialog-close]="true">ELIMINAR</button>
+  <button mat-button mat-dialog-close>SALIR</button>
+</mat-dialog-actions>
