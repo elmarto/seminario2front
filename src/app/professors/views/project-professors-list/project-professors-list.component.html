@@ -14,14 +14,10 @@
       </mat-menu>
     </mat-card-header>
     <mat-card-content>
-      <button mat-button *ngIf="project.budgets?.length > 0" disabled><i>Ya has enviado un presupuesto</i></button>
       <button mat-button *ngIf="project.budgets?.length == 0"><i>¡Aún no has enviado presupuesto!</i></button>
-      <p *ngIf="project.budgets?.length > 0 && project.budgets[0].budgetStatusID == 2">
-        <span matBadge="!" matBadgeOverlap="false" matBadgeSize="medium" matBadgeColor="accent"> <i>¡El presupuesto fue aceptado!</i></span>
-      </p>
-      <p *ngIf="project.budgets?.length > 0 && project.budgets[0].budgetStatusID == 3">
-        <span matBadge="!" matBadgeOverlap="false" matBadgeSize="medium" matBadgeColor="accent"> <i>El presupuesto fue rechazado</i></span>
-      </p>      
+      <button mat-button *ngIf="project.budgets?.length > 0 && project.budgets[0].budgetStatusID == 1" disabled><i>Has enviado un presupuesto</i></button>
+      <button mat-button *ngIf="project.budgets?.length > 0 && project.budgets[0].budgetStatusID == 2"><span matBadge="!" matBadgeOverlap="false" matBadgeSize="medium" matBadgeColor="accent"> <i>¡El presupuesto fue aceptado!</i></span></button>
+      <button mat-button *ngIf="project.budgets?.length > 0 && project.budgets[0].budgetStatusID == 3"><span matBadge="!" matBadgeOverlap="false" matBadgeSize="medium" matBadgeColor="accent"> <i>El presupuesto fue rechazado</i></span></button>
     </mat-card-content>
     <img mat-card-image fxHide.lt-md src="assets/images/person.jpg" alt="Photo of a Shiba Inu">
     <mat-card-content fxLayoutAlign="space-between center">
