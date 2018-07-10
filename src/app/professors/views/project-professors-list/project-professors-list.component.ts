@@ -25,7 +25,7 @@ export class ProjectProfessorsListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.projectService.findByProfessional().subscribe(response => {
       this.projects = response;
-      if (this.projects && this.projects.length > 0) {
+      if (this.projects.length > 0) {
         this.subscription = timer(0, 5000).subscribe(x => {
           this.projects.forEach(project => {
             this.budgetService.findByProjectId(project.projectID).subscribe(budgets => project.budgets = budgets);

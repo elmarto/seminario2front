@@ -1,5 +1,9 @@
-<div class="title-container" fxLayoutAlign="space-between center">
+<div class="title-container" fxLayoutAlign="space-between center" *ngIf="projects?.length > 0">
   <h1>Solicitudes en las que has aparecido</h1>
+</div>
+
+<div class="title-container" fxLayoutAlign="space-between center" *ngIf="projects?.length == 0">
+  <h1>¡Aún no te han encontrado! Revisa los intereses en tu perfil para que los demás puedan encontrarte.</h1>
 </div>
 
 <section class="project-container" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutAlign.lt-md="center">
@@ -24,8 +28,4 @@
       <i>Activa</i> <i>{{project.registerDate | date}}</i>
     </mat-card-content>
   </mat-card>
-
-  <div *ngIf="projects && !projects.length" fxLayoutAlign="center center">
-    Todavía no has aparecido en ninguna búsqueda.
-  </div>
 </section>

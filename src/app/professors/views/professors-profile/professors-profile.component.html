@@ -17,7 +17,7 @@
                 <mat-chip-list [multiple]="true" style="margin-top: 15px">
                     <mat-chip color="accent" *ngFor="let profession of professions" [selected]="profession.selected" (click)="profession.selected=!profession.selected">{{profession.professionName}}</mat-chip>
                 </mat-chip-list>
-                <mat-action-row>
+                <mat-action-row style="margin-top: 15px;">
                     <button mat-button color="accent" (click)="saveChanges()">Guardar cambios</button>
                 </mat-action-row>
             </form>
