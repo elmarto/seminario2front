@@ -53,7 +53,10 @@ export class ProjectProfessorsDetailComponent implements OnInit {
       amount: this.form.get('amount').value
     };
 
-    this.budgetService.create(budgetCreateRequest).subscribe(response => console.log(response));
+    this.budgetService.create(budgetCreateRequest).subscribe(response => {
+      this.snackBar.open('¡Has enviado tu oferta al alumno!', null, { duration: 3000 });
+      this.dialogRef.close();
+    });
   }
 
   close() {
