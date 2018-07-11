@@ -21,15 +21,15 @@ export class ScoreService  {
   }
 
   getProfessionalScores(): Observable<any> {
-    return this.httpClient.get<any>(`${env.apiUrl}/clientScores.php/getProfessionalScores`);
+    return this.httpClient.get<any>(`${env.apiUrl}/professionalScores.php/getProfessionalScores`);
   }
 
   getProfessionalPendingScores(): Observable<any> {
-    return this.httpClient.get<any>(`${env.apiUrl}/clientScores.php/getClientPendingScores`);
+    return this.httpClient.get<any>(`${env.apiUrl}/professionalScores.php/getProfessionalPendingScores`);
   }
 
   setProfessionalScores(request: ScoreRequest): Observable<any> {
-    return this.httpClient.post<any>(`${env.apiUrl}/clientScores.php/insertClientScore`, request);
+    return this.httpClient.post<any>(`${env.apiUrl}/professionalScores.php/insertProfessionalScore`, request);
   }
 
 }

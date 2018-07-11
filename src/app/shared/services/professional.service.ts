@@ -15,7 +15,8 @@ export class ProfessionalService {
   constructor(private httpClient: HttpClient) { }
 
   findProfessionsByProfessional(): Observable<Profession[]> {
-    return this.httpClient.get<Profession[]>(environment.apiUrl + '/professionals.php/getProfessionalProfessionsByUserID');
+    return this.httpClient.get<ResponseMetadata>(environment.apiUrl + '/professionals.php/getProfessionalProfessions')
+              .pipe(map(response => response.status.code === 200 ? response.values : []));
   }
 
   addProfession(professionalProfessionCreateRequest: ProfessionalProfessionCreateRequest): Observable<boolean> {
@@ -25,6 +26,6 @@ export class ProfessionalService {
 
   removeProfession(professionalProfessionDeleteRequest: ProfessionalProfessionDeleteRequest): Observable<boolean> {
     // tslint:disable-next-line:max-line-length
-    return this.httpClient.post<boolean>(environment.apiUrl + '/professionals.php/deleteProfessionalProfession', professionalProfessionDeleteRequest);
+    return this.httpClient.delete<boolean>(environment.apiUrl + '/professionals.php/deleteProfessionalProfession/' + professionalProfessionDeleteRequest.professionID);
   }
 }
