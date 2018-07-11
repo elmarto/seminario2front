@@ -18,7 +18,7 @@ export class ScoreStudentListComponent implements OnInit {
     private scoreService: ScoreService
   ) {
     this.scoreService.getClientPendingScores().subscribe(response => this.pendingScores = response.values);
-    this.scoreService.getClientScores().subscribe(response => this.scores = response.values);
+    this.scoreService.getClientScores().subscribe(response => this.scores = response.values || []);
   }
 
   ngOnInit() {

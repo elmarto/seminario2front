@@ -65,6 +65,19 @@ export class ProjectStudentDetailComponent implements OnInit {
     return parseFloat(numberString);
   }
 
+  getStars(budget: Budget) {
+    try {
+      const total = parseInt(budget.negativos, 10) + parseInt(budget.neutros, 10) + parseInt(budget.positivos, 10);
+      let score = 0;
+      score += parseInt(budget.negativos, 10);
+      score += parseInt(budget.neutros, 10) * 3;
+      score += parseInt(budget.positivos, 10) * 5;
+      return Math.round(score / total) || 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
   answerBudget(budget: Budget, budgetStatusID) {
     const request: BudgetUpdateRequest = {
       budgetID: budget.budgetID,

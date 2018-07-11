@@ -33,6 +33,8 @@ export class ProjectProfessorsListComponent implements OnInit, OnDestroy {
     this.projectService.findByProfessional().subscribe(projects => {
       if (this.projects.length !== projects.length) {
         this.projects = projects;
+      }
+      if (this.projects && this.projects.length) {
         this.projects.forEach(project => {
           this.budgetService.findByProjectId(project.projectID).subscribe(budgets => project.budgets = budgets);
         });

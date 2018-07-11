@@ -32,6 +32,9 @@ export interface Budget {
   sexName?: string;
   statusDescription?: string;
   statusName?: string;
+  negativos?: string;
+  neutros?: string;
+  positivos?: string;
 }
 
 export interface BudgetStatus {

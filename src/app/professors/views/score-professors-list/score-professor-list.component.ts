@@ -18,7 +18,7 @@ export class ScoreProfessorListComponent implements OnInit {
     private scoreService: ScoreService
   ) {
     this.scoreService.getProfessionalPendingScores().subscribe(response => this.pendingScores = response.values);
-    this.scoreService.getProfessionalScores().subscribe(response => this.scores = response.values);
+    this.scoreService.getProfessionalScores().subscribe(response => this.scores = response.values || []);
   }
 
   ngOnInit() {

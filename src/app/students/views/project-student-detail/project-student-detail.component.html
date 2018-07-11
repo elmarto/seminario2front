@@ -30,7 +30,7 @@
               <div>
                 <small *ngIf="budget.sexCode === 'M'">Profesor</small>
                 <small *ngIf="budget.sexCode !== 'M'">Profesora</small>
-                <small class="stars">★★★★★</small>
+                <small class="stars">{{(getStars(budget) === 0) ? 'NUEVO' : '★'.repeat(getStars(budget))}}</small>
                 <h3>{{budget.firstName}} {{budget.lastName}}</h3>
               </div>
               <div>
@@ -64,7 +64,7 @@
         <div class="professor">
           <small *ngIf="selectedBudget.sexCode === 'M'">Profesor</small>
           <small *ngIf="selectedBudget.sexCode !== 'M'">Profesora</small>
-          <small class="stars">★★★★★</small>
+          <small class="stars">{{(getStars(budget) === 0) ? 'NUEVO' : '★'.repeat(getStars(budget))}}</small>
           <h3>{{selectedBudget.firstName}} {{selectedBudget.lastName}}</h3>
         </div>
         <div>
