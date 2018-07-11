@@ -12,6 +12,7 @@ import { ProfessorsHomeComponent } from './views/professors-home/professors-home
 import { ProjectProfessorsListComponent } from './views/project-professors-list/project-professors-list.component';
 import { ProjectProfessorsDetailComponent } from './views/project-professors-detail/project-professors-detail.component';
 import { ProfessorsProfileComponent } from './views/professors-profile/professors-profile.component';
+import { ScoreProfessorListComponent } from './views/score-professors-list/score-professor-list.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { ProfessorsProfileComponent } from './views/professors-profile/professor
     ProfessorsHomeComponent,
     ProjectProfessorsListComponent,
     ProjectProfessorsDetailComponent,
-    ProfessorsProfileComponent
+    ProfessorsProfileComponent,
+    ScoreProfessorListComponent
   ],
   entryComponents: [
     ProfessorsHeaderComponent,

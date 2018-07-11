@@ -60,7 +60,7 @@
   <section style="min-height: 400px; width: 100%;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
     <div fxLayout="column" fxLayoutAlign="center top" fxLayoutGap="1em" style="width: 100%;">
       <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div>
+        <div class="professor">
           <small *ngIf="selectedBudget.sexCode === 'M'">Profesor</small>
           <small *ngIf="selectedBudget.sexCode !== 'M'">Profesora</small>
           <h3>{{selectedBudget.firstName}} {{selectedBudget.lastName}}</h3>

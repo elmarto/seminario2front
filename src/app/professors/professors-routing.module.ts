@@ -6,6 +6,7 @@ import { ProfessorsHeaderComponent } from './views/professors-header/professors-
 import { ProfessorsHomeComponent } from './views/professors-home/professors-home.component';
 import { ProjectProfessorsListComponent } from './views/project-professors-list/project-professors-list.component';
 import { ProfessorsProfileComponent } from './views/professors-profile/professors-profile.component';
+import { ScoreProfessorListComponent } from './views/score-professors-list/score-professor-list.component';
 
 const componentRoutes: Routes = [
   { path: '', redirectTo: '/professors/home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const componentRoutes: Routes = [
       { path: 'home', component: ProfessorsHomeComponent },
       { path: 'profile', component: ProfessorsProfileComponent },
       { path: 'list-projects', component: ProjectProfessorsListComponent },
+      { path: 'scores', component: ScoreProfessorListComponent },
       { path: '', component: ProfessorsHeaderComponent, outlet: 'professors-header' }
     ]
   }

@@ -2,6 +2,11 @@
   position: relative;
 
 
+
+  h3 {
+    margin: 0;
+  }
+  
   .budget-list {
     box-shadow: 1px 1px 3px #CCC;
     border-radius: 2px;
@@ -34,7 +39,7 @@
 
   .budget-detail {
     h3 {
-      margin: 0;
+      margin: 0 !important;
     }
 
     .map {

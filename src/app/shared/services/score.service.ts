@@ -9,7 +9,11 @@ export class ScoreService  {
   constructor(private httpClient: HttpClient) { }
 
   getClientScores(): Observable<any> {
-    return this.httpClient.get<any>(`${env.apiUrl}/clientScores.php/GetClientScores`);
+    return this.httpClient.get<any>(`${env.apiUrl}/clientScores.php/getClientScores`);
+  }
+
+  getClientPendingScores(): Observable<any> {
+    return this.httpClient.get<any>(`${env.apiUrl}/clientScores.php/getClientPendingScores`);
   }
 
   setClientScores(request: ScoreRequest): Observable<any> {
@@ -17,7 +21,11 @@ export class ScoreService  {
   }
 
   getProfessionalScores(): Observable<any> {
-    return this.httpClient.get<any>(`${env.apiUrl}/clientScores.php/GetProfessionalScores`);
+    return this.httpClient.get<any>(`${env.apiUrl}/clientScores.php/getProfessionalScores`);
+  }
+
+  getProfessionalPendingScores(): Observable<any> {
+    return this.httpClient.get<any>(`${env.apiUrl}/clientScores.php/getClientPendingScores`);
   }
 
   setProfessionalScores(request: ScoreRequest): Observable<any> {

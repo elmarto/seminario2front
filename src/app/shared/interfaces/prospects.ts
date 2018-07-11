@@ -84,4 +84,5 @@ export interface ProfessionalProfessionDeleteRequest {
 export interface ScoreRequest {
     scoreID: {1, 2, 3};
     comments: string;
+    projectID: number | string;
 }

@@ -1,0 +1,50 @@
+<div class="title-container" fxLayoutAlign="space-between center">
+  <h1>Calificar Mis Clases</h1>
+</div>
+
+<div *ngIf="!pendingScores || !pendingScores.length" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1em" style="text-align: center; padding: 2em; padding-top: 3em; font-size: 1.1em;">
+  <span>¡Yay! No tienes clases por calificar</span>
+</div>
+
+<div *ngIf="pendingScores && pendingScores.length">
+  <section class="scores-container" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutAlign.lt-md="center">
+    <mat-accordion fxFlex>
+      <mat-expansion-panel *ngFor="let score of pendingScores; index as i;">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{score.projectName}}</mat-panel-title>
+          <mat-panel-description>{{score.firstName}} {{score.lastName}}</mat-panel-description>
+        </mat-expansion-panel-header>
+        
+        <p style="text-align: center;">¿Cómo calificarías la clase con <i>{{score.firstName}} {{score.lastName}}</i>?</p>
+        
+        <div fxLayoutAlign="center center">
+          <mat-button-toggle-group aria-label="Calificacion">
+            <mat-button-toggle (click)="sendScore(1, i)"><i class="material-icons">sentiment_very_dissatisfied</i></mat-button-toggle>
+            <mat-button-toggle (click)="sendScore(2, i)"><i class="material-icons">sentiment_satisfied</i></mat-button-toggle>
+            <mat-button-toggle (click)="sendScore(3, i)"><i class="material-icons">sentiment_very_satisfied</i></mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </section>
+</div>
+
+<div class="title-container" fxLayoutAlign="space-between center">
+  <h1>Clases Calificadas</h1>
+</div>
+
+<div *ngIf="!scores || !scores.length" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1em" style="text-align: center; padding: 2em; padding-top: 3em; font-size: 1.1em;">
+    <span>Aun no has calificado ninguna clase</span>
+  </div>
+
+<div *ngIf="scores && scores.length">
+  <section class="scores-container" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutAlign.lt-md="center">
+    <mat-accordion fxFlex>
+      <mat-expansion-panel *ngFor="let score of scores">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{score.projectName}}</mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </section>
+</div>
