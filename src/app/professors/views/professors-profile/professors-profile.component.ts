@@ -23,11 +23,11 @@ export class ProfessorsProfileComponent implements OnInit {
   ngOnInit(): void {
     this.professionalService.findProfessionsByProfessional().subscribe(professionsByProfessional => {
       professionsByProfessional.forEach(profession => this.previousProfessionsSelected.add(profession.professionID));
-    });
-    this.professionService.findAll().subscribe(allProfessions => {
-      allProfessions.forEach(profession => {
-        const selectableProfession = Object.assign({selected: this.previousProfessionsSelected.has(profession.professionID)}, profession);
-        this.professions.push(selectableProfession);
+      this.professionService.findAll().subscribe(allProfessions => {
+        allProfessions.forEach(profession => {
+          const selectableProfession = Object.assign({selected: this.previousProfessionsSelected.has(profession.professionID)}, profession);
+          this.professions.push(selectableProfession);
+        });
       });
     });
   }
