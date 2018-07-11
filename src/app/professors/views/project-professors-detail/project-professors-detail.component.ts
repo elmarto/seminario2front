@@ -33,6 +33,10 @@ export class ProjectProfessorsDetailComponent implements OnInit {
     });
   }
 
+  parseFloat(n): number {
+    return parseFloat(n);
+  }
+
   getProjectLat(): number {
     return parseFloat(this.project.lat);
   }

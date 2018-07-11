@@ -1,0 +1,52 @@
+:host {
+  position: relative;
+
+
+
+  h3 {
+    margin: 0;
+  }
+  
+  .budget-list {
+    box-shadow: 1px 1px 3px #CCC;
+    border-radius: 2px;
+    padding: 0 7px;
+    margin: 0;
+
+    .budget-item {
+      width: 100%;
+      padding: 0.5em;
+      border-bottom: 1px solid #ccc;
+      
+      &:last-child {
+        border: none
+      }
+
+      &.disabled {
+        color: #aaa;
+      }
+
+      .budget-name {
+        margin: 0;
+      }
+
+      .budget-amount {
+        font-size: 0.8em;
+        color: #aaa;
+      }
+    }
+  }
+
+  .budget-detail {
+    h3 {
+      margin: 0 !important;
+    }
+
+  }
+  
+  .map {
+    height: 175px;
+    margin: 0px -24px;
+    width: calc(100% + 4em);
+  }
+}

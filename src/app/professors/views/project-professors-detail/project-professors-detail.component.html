@@ -1,69 +1,76 @@
-<h2 mat-dialog-title>{{project.projectName}}</h2>
-<mat-dialog-content>
-  <section class="project-container" fxLayout="column">
-    <mat-tab-group>
-      <mat-tab label="Búsqueda">
-        <h3>Mensaje</h3>
-        <div style="background-color: #efefef; border-radius: 4px; overflow: auto;">
-            <p style="margin: 15px;">"...{{project.projectDescription}}..."</p>
+<h2 mat-dialog-title fxLayout fxLayoutAlign="start center" fxLayoutGap="1em">
+  <span>Clase de {{project.projectName}}</span>
+</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate style="width: 100%;">
+<section style="min-height: 400px; width: 100%;" class="project-container" fxLayout="column" fxLayoutAlign="start start">
+    <div fxLayout="column" fxLayoutAlign="center top" fxLayoutGap="1em" style="width: 100%;">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="professor">
+          <small>Alumno</small>
+          <h3>{{project.firstName}} {{project.lastName}}</h3>
         </div>
-        <p style="text-align: right; font-style: italic;">{{project.firstName}} {{project.lastName}}</p>
-        <mat-divider></mat-divider>   
-        <h3>Presupuesto</h3>
-        <ng-container *ngIf="project?.budgets?.length == 0">
-          <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
-            <mat-form-field class="field" fxFlex="100" style="width: 100%;">
-              <textarea matInput style="height: 30px" formControlName="comments" placeholder="Escribe el mensaje que quieras enviarle"></textarea>
-              <mat-error *ngIf="form.get('comments').hasError('required')">Este campo es requerido</mat-error>
-              <mat-error *ngIf="form.get('comments').hasError('maxlength')">Debe tener menos de 140 caracteres.</mat-error>
-            </mat-form-field>
-            <mat-form-field class="field" fxFlex="100" style="width: 100%;">
-              <input matInput formControlName="amount" type="number" placeholder="Precio por hora">
-              <mat-error *ngIf="form.get('amount').hasError('required')">Este campo es requerido</mat-error>
-            </mat-form-field>
-            <div fxLayoutAlign="end center" fxLayoutGap="1em">
-              <button mat-raised-button type="submit" [disabled]="!form.valid" color="accent">ENVIAR PRUESTO</button>
-            </div>        
-          </form>
-          </ng-container>
-          <ng-container *ngIf="project?.budgets?.length > 0">
-            <div style="background-color: #efefef; border-radius: 4px; overflow: auto;">
-                <p style="margin: 15px;">
-                  "...{{project.budgets[0].comments}}..."
-                  <br />
-                  <br />
-                  {{project.budgets[0].amount | currency}}
-                </p>
-            </div>
-            <p style="text-align: right; font-style: italic;">Tú</p>
-            <p *ngIf="project?.budgets?.length > 0 && project?.budgets[0].budgetStatusID == 2">
-              <i>¡El presupuesto fue aceptado!</i>
-            </p>
-            <p *ngIf="project?.budgets?.length > 0 && project?.budgets[0].budgetStatusID == 3">
-              <i>El presupuesto fue rechazado</i>
-            </p>                  
-          </ng-container>
-      </mat-tab>
-      <mat-tab label="Ubicación">
-        <h3>{{project.cityName}} - {{project.stateProvinceName}}</h3>
-        <agm-map  
-        [latitude]="getProjectLat()"
-        [longitude]="getProjectLng()"
+      </div>
+      <span>
+        {{project.projectDescription}}
+      </span>
+
+      <agm-map 
+        [latitude]="parseFloat(project.lat)"
+        [longitude]="parseFloat(project.lng)"
         [zoom]="14"
         [disableDefaultUI]="true"
         [zoomControl]="false"
-        class="map" style="height: 200px">
-          <agm-circle [latitude]="getProjectLat()" [longitude]="getProjectLng()" 
-              [radius]="400"
-              [fillColor]="'#e91e63'"
-              [circleDraggable]="false"
-              [editable]="false">
-          </agm-circle>        
-        </agm-map>  
-      </mat-tab>
-    </mat-tab-group>  
-  </section>
-</mat-dialog-content>
-<mat-dialog-actions fxLayoutAlign="end center" fxLayoutGap="1em">
-  <button mat-button color="accent" type="button" (click)="close()">CERRAR</button>
-</mat-dialog-actions>
+        class="map"
+        style="height: 200px">
+        
+        <agm-circle [latitude]="parseFloat(project.lat + 0.03)" [longitude]="parseFloat(project.lng)" 
+            [radius]="400"
+            [fillColor]="'#e91e63'"
+            [circleDraggable]="false"
+            [editable]="false">
+        </agm-circle>
+
+      </agm-map>
+
+
+      <h3>Presupuesto</h3>
+        <ng-container *ngIf="project?.budgets?.length == 0">
+          
+          <mat-form-field class="field" fxFlex="100" style="width: 100%;">
+            <textarea matInput style="height: 30px" formControlName="comments" placeholder="Escribe el mensaje que quieras enviarle"></textarea>
+            <mat-error *ngIf="form.get('comments').hasError('required')">Este campo es requerido</mat-error>
+            <mat-error *ngIf="form.get('comments').hasError('maxlength')">Debe tener menos de 140 caracteres.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="field" fxFlex="100" style="width: 100%;">
+            <input matInput formControlName="amount" type="number" placeholder="Precio por hora">
+            <mat-error *ngIf="form.get('amount').hasError('required')">Este campo es requerido</mat-error>
+          </mat-form-field>
+        
+        </ng-container>
+        <ng-container *ngIf="project?.budgets?.length > 0">
+          <div style="background-color: #efefef; border-radius: 4px; overflow: auto;">
+              <p style="margin: 15px;">
+                "...{{project.budgets[0].comments}}..."
+                <br />
+                <br />
+                {{project.budgets[0].amount | currency}}
+              </p>
+          </div>
+          <p style="text-align: right; font-style: italic;">Tú</p>
+          <p *ngIf="project?.budgets?.length > 0 && project?.budgets[0].budgetStatusID == 2">
+            <i>¡El presupuesto fue aceptado!</i>
+          </p>
+          <p *ngIf="project?.budgets?.length > 0 && project?.budgets[0].budgetStatusID == 3">
+            <i>El presupuesto fue rechazado</i>
+          </p>                  
+        </ng-container>
+      </div>
+    </section>
+    
+    <mat-dialog-actions fxLayoutAlign="end center" fxLayoutGap="1em">
+      <button mat-button color="accent" type="button" (click)="close()">CERRAR</button>
+      <button mat-raised-button type="submit" [disabled]="!form.valid" color="accent">ENVIAR</button>
+    </mat-dialog-actions>
+  </form>
+    
