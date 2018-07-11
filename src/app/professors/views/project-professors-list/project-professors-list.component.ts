@@ -25,11 +25,16 @@ export class ProjectProfessorsListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.projectService.findByProfessional().subscribe(response => {
       this.projects = response;
-      if (this.projects.length > 0) {
-        this.subscription = timer(0, 5000).subscribe(x => {
-          this.projects.forEach(project => {
-            this.budgetService.findByProjectId(project.projectID).subscribe(budgets => project.budgets = budgets);
-          });
+      this.subscription = timer(0, 5000).subscribe(x => {this.makePollingRequest(); });
+    });
+  }
+
+  makePollingRequest() {
+    this.projectService.findByProfessional().subscribe(projects => {
+      if (this.projects.length !== projects.length) {
+        this.projects = projects;
+        this.projects.forEach(project => {
+          this.budgetService.findByProjectId(project.projectID).subscribe(budgets => project.budgets = budgets);
         });
       }
     });

@@ -10,24 +10,32 @@ import { ScoreRequest } from 'app/shared/interfaces/prospects';
 })
 export class ScoreStudentListComponent implements OnInit {
 
-  scores: [1, 2, 3];
+  scores: any[] = [];
+  pendingScores: any[] = [];
 
   constructor(
     private snackBar: MatSnackBar,
     private scoreService: ScoreService
   ) {
-    this.scoreService.getClientScores().subscribe(scores => this.scores = scores);
+    this.scoreService.getClientPendingScores().subscribe(response => this.pendingScores = response.values);
+    this.scoreService.getClientScores().subscribe(response => this.scores = response.values);
   }
 
   ngOnInit() {
   }
 
-  sendScore(scoreId) {
+  sendScore(scoreId, index) {
+    // this.scores.push(this.pendingScores[index]);
+    // this.pendingScores.slice(index, 1);
+    // this.snackBar.open('¡Gracias por calificar al profesor!' , null, { duration: 2000 });
     const request: ScoreRequest = {
       scoreID: scoreId,
+      projectID: this.pendingScores[index].projectID,
       comments: ''
     };
     this.scoreService.setClientScores(request).subscribe(response => {
+      this.scores.push(this.pendingScores[index]);
+      this.pendingScores.splice(index, 1);
       this.snackBar.open('¡Gracias por calificar al profesor!' , null, { duration: 2000 });
     });
   }
